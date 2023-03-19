@@ -1,0 +1,396 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@700&display=swap");
+.NavBar {
+  display: flex;
+  padding: 2vh;
+  padding-inline: 4vw;
+  background-color: #0275FF;
+  border: none;
+}
+.NavBar__Logo {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.QuizPanel {
+  overflow: auto;
+  border-right: 1px solid #0275FF;
+  min-width: 35vw;
+  padding: 2%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+}
+
+.QuizCard {
+  min-width: 80%;
+  min-height: 20vh;
+  box-shadow: 10px 10px 5px -3px rgba(0, 0, 0, 0.16);
+  border-radius: 10px;
+  border: 4px solid #EAF5FF;
+  transition: all 0.2s;
+  text-align: left;
+  padding: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2vh;
+}
+.QuizCard:hover {
+  transform: scale(1.1);
+}
+.QuizCard i {
+  font-size: 1.5rem;
+  transition: all 0.5s;
+}
+.QuizCard i:hover {
+  color: #0275FF;
+}
+.QuizCard__Buttons {
+  display: flex;
+}
+.QuizCard__Buttons Button {
+  background-color: #0275FF;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  min-height: 2vh;
+  min-width: 5vw;
+  margin-left: 1vw;
+}
+
+.AdminWindow {
+  display: flex;
+  flex-direction: row;
+}
+
+.CustomAlerts {
+  position: absolute;
+  right: 8px;
+  top: 60px;
+  text-align: center;
+  background-color: #0275FF !important;
+  min-height: 8vh;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.5rem;
+  transition: all 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AddQuestion {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  max-width: 30%;
+}
+.AddQuestion__Chat {
+  overflow: auto;
+  background-color: white;
+  min-height: 60vh;
+  max-height: 40vh;
+  min-width: 30vw;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.AddQuestion__Chat__Header {
+  background-color: #0275FF;
+  padding: 3%;
+  display: flex;
+  align-items: flex-start;
+  gap: 1vw;
+  color: white;
+  font-weight: bold;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.AddQuestion__Chat_Replay {
+  background-color: #EAF5FF;
+  position: relative;
+  color: black;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  font-family: "Inter", sans-serif;
+  width: 60%;
+  padding: 2%;
+  margin-left: 10vw;
+  margin-bottom: 2vh;
+  text-align: left;
+}
+.AddQuestion__Chat_Main {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 3%;
+  gap: 1.2vw;
+  text-align: left;
+  color: white;
+}
+.AddQuestion__Chat_Main div {
+  background-color: #EAF5FF;
+  position: relative;
+  color: black;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  font-family: "Inter", sans-serif;
+  width: 60%;
+  padding: 2%;
+}
+.AddQuestion__Chat_Main i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0275FF;
+  border-radius: 50%;
+  min-height: 5vh;
+  min-width: 5vh;
+  font-size: 1rem;
+}
+.AddQuestion__Chat_Types {
+  display: flex;
+  gap: 2vw;
+  justify-content: center;
+}
+.AddQuestion__Chat_Types_Type {
+  background-color: #EAF5FF;
+  padding: 5%;
+  border-radius: 10px;
+}
+.AddQuestion__Chat_Types_Type:hover {
+  background-color: #0275FF;
+  color: white;
+}
+.AddQuestion__Chat_Input {
+  padding-top: 10%;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 0.5vw;
+}
+.AddQuestion__Chat_Input input {
+  min-height: 4vh;
+  border: none;
+  background-color: #EAF5FF;
+  border-radius: 5px;
+  min-width: 20vw;
+  text-indent: 10px;
+}
+.AddQuestion__Chat_Input button {
+  background-color: #0275FF;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  min-height: 4vh;
+  min-width: 5vw;
+}
+.AddQuestion__Chat_Stop {
+  background-color: #0275FF;
+  border: none;
+  color: white;
+  min-width: 25vw;
+  min-height: 4vh;
+  font-size: 1rem;
+  border-radius: 10px;
+  padding: 2%;
+  margin-top: 4vh;
+}
+.AddQuestion__Float {
+  position: relative;
+  bottom: 0px;
+  left: 85%;
+  margin-top: 1vh;
+  border-radius: 50%;
+  min-height: 7vh;
+  min-width: 7.5vh;
+  max-width: 7.5vh;
+  max-height: 7vh !important;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0275FF;
+  color: white;
+  padding-bottom: 2%;
+  transition: all 1s;
+}
+.AddQuestion__Float:hover {
+  transform: scale(1.1);
+}
+
+.Bot_Hidden {
+  visibility: hidden;
+}
+
+.AddQuiz {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  transition: 1s all;
+}
+.AddQuiz__Form {
+  display: none;
+  flex-direction: column;
+  gap: 2vh;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 2%;
+  background-color: #EAF5FF;
+  border-radius: 10px;
+  width: 80%;
+}
+.AddQuiz__Form input {
+  min-height: 4vh;
+  width: 70%;
+  border: none;
+}
+.AddQuiz__Form button {
+  background-color: #0275FF;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  min-height: 4vh;
+  min-width: 5vw;
+  margin-left: 1vw;
+}
+.AddQuiz__Button button {
+  background-color: #0275FF;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  min-height: 4vh;
+  min-width: 5vw;
+}
+
+.Open__Form {
+  display: flex !important;
+}
+
+.QuestionPanel {
+  overflow: auto;
+  min-width: 35vw;
+  padding: 2%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+}
+.QuestionPanel__Items {
+  display: flex;
+  gap: 2vw;
+  justify-content: center;
+  align-items: center;
+}
+.QuestionPanel__Items_Arrows {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+.QuestionPanel__Items_Arrows_Arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0275FF;
+  padding: 6%;
+  min-height: 4vh;
+  min-width: 4vh;
+  color: white;
+  border-radius: 50%;
+}
+.QuestionPanel__Header {
+  display: flex;
+  text-align: left;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #EAF5FF;
+  border-radius: 10px;
+  padding: 3%;
+  gap: 1vh;
+}
+
+.QuestionCard {
+  min-width: 80%;
+  min-height: 10vh;
+  box-shadow: 10px 10px 5px -3px rgba(0, 0, 0, 0.16);
+  border-radius: 10px;
+  border: 4px solid #EAF5FF;
+  transition: all 0.2s;
+  text-align: left;
+  padding: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2vh;
+}
+.QuestionCard:hover {
+  transform: scale(1.1);
+}
+.QuestionCard i {
+  font-size: 1.5rem;
+  transition: all 0.5s;
+}
+.QuestionCard i:hover {
+  color: #0275FF;
+}
+.QuestionCard__Buttons {
+  display: flex;
+}
+.QuestionCard__Buttons Button {
+  background-color: #0275FF;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  min-height: 2vh;
+  min-width: 5vw;
+  margin-left: 1vw;
+}
+.QuestionCard__Options {
+  display: flex;
+  flex-direction: row;
+  gap: 2vw;
+}
+.QuestionCard__Options_Option {
+  background-color: #EAF5FF;
+  min-width: 3vw;
+  text-align: center;
+  padding: 2%;
+  border-radius: 20px;
+}
+.QuestionCard__Options_Option_correct {
+  background-color: rgb(0, 160, 0);
+  min-width: 3vw;
+  text-align: center;
+  padding: 2%;
+  color: white;
+  border-radius: 20px;
+}
+
+.HelpCard {
+  text-align: left;
+  background-color: #EAF5FF;
+  max-height: 30vh;
+  margin: 2vh;
+  margin-top: 4vh;
+  border-radius: 10px;
+  padding-top: 1%;
+  margin-top: 10vh;
+}
+.HelpCard__Header {
+  font-size: 1.2rem;
+  margin-left: 7%;
+  font-weight: bold;
+}
+
+html, body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}/*# sourceMappingURL=main.css.map */

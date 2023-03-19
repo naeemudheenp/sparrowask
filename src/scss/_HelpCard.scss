@@ -1,0 +1,22 @@
+.HelpCard{
+    text-align: left;
+    background-color: #EAF5FF;
+
+    max-height: 30vh;
+    margin: 2vh;
+    margin-top: 4vh;
+
+    border-radius: 10px;
+    padding-top: 1%;
+
+    margin-top: 10vh;
+
+    
+    
+
+    &__Header{
+        font-size: 1.2rem;
+        margin-left: 7%;
+        font-weight: bold;
+    }
+}

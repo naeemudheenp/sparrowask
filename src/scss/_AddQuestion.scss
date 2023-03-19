@@ -1,0 +1,215 @@
+@use 'globals';
+.AddQuestion{
+   
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    
+   
+
+   
+
+    display: flex;
+    flex-direction: column;
+
+    max-width: 30%;
+
+  
+
+    &__Chat{
+      
+        overflow: auto;
+        background-color: white;
+        min-height: 60vh;
+        max-height: 40vh;
+        min-width: 30vw;
+        
+      
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+
+        &__Header{
+            background-color: globals.$BackgroundColor;
+          
+           
+           padding: 3%;
+          
+    
+            display: flex;
+            align-items: flex-start;
+    
+            gap: 1vw;
+            color: white;
+    
+            font-weight: bold;
+            
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+           
+
+    
+    
+     
+    
+            
+          
+        }
+
+        &_Replay{
+            background-color: #EAF5FF;
+            position: relative;
+            color: black;
+            border-top-right-radius: 1rem;
+            border-top-left-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+            font-family: 'Inter', sans-serif;
+            width: 60%;
+
+            padding: 2%;
+
+            margin-left: 10vw;
+
+            margin-bottom: 2vh;
+            text-align: left;
+         
+
+        }
+
+        &_Main{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 3%;
+            gap: 1.2vw;
+
+            text-align: left;
+            
+            color: white;
+           
+
+        
+
+            div{
+                background-color: #EAF5FF;
+                position: relative;
+                color: black;
+                border-top-right-radius: 1rem;
+                border-top-left-radius: 1rem;
+                border-bottom-right-radius: 1rem;
+                font-family: 'Inter', sans-serif;
+                width: 60%;
+
+                padding: 2%;
+
+              
+
+            }
+            i{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: globals.$BackgroundColor;
+                border-radius: 50%;
+                min-height:5vh;
+                min-width: 5vh;
+
+                font-size: 1.0rem;
+            }
+        }
+
+        &_Types{
+            display: flex;
+            gap: 2vw;
+
+            justify-content: center;
+
+            &_Type{
+                background-color: #EAF5FF;;
+                padding: 5%;
+                border-radius: 10px;
+
+                &:hover{
+                    background-color: globals.$BackgroundColor;
+                    color: white;
+                }
+            }
+        }
+
+        &_Input{
+           
+            padding-top: 10%;
+            width: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            gap: 0.5vw;
+          
+            input{
+                min-height: 4vh;
+                border: none;
+                background-color: #EAF5FF;
+                border-radius: 5px;
+                min-width: 20vw;
+                text-indent: 10px;
+            }
+            button{
+                background-color: globals.$BackgroundColor;
+                border-radius: 5px;
+                border: none;
+                color: white;
+                min-height: 4vh;
+                min-width: 5vw;
+            }
+        }
+
+        &_Stop{
+            background-color:globals.$BackgroundColor;
+            border: none;
+            color: white;
+            min-width: 25vw;
+            min-height: 4vh;
+            font-size: 1rem;
+            border-radius: 10px;
+            padding: 2%;
+            margin-top: 4vh;
+        }
+    
+
+
+    }
+
+    &__Float{
+        position: relative;
+        bottom: 0px;
+        left: 85%;
+        margin-top: 1vh;
+        border-radius: 50%;
+        min-height: 7vh;
+        min-width: 7.5vh;
+        max-width: 7.5vh;
+        max-height: 7vh !important;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: globals.$BackgroundColor;
+        color: white;
+
+        padding-bottom: 2%;
+
+        transition: all 1s;
+
+        &:hover{
+            transform: scale(1.1);
+        }
+
+    }
+
+  
+}
+
+.Bot_Hidden{
+    visibility: hidden;
+}

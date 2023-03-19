@@ -1,0 +1,58 @@
+@use 'globals';
+.AddQuiz{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    
+
+    transition: 1s all;
+
+    &__Form{
+        
+        display: none;
+       
+        flex-direction: column;
+        gap: 2vh;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 2%;
+        background-color: #EAF5FF;;
+        border-radius: 10px;
+        width: 80%;
+
+        input{
+            min-height: 4vh;
+            width: 70%;
+            border: none;
+        }
+        button{
+            background-color: globals.$BackgroundColor;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            min-height: 4vh;
+            min-width: 5vw;
+            margin-left: 1vw;
+    
+        }
+
+
+    }
+
+   &__Button{
+    button{
+        background-color: globals.$BackgroundColor;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        min-height: 4vh;
+        min-width: 5vw;
+
+    }
+   }
+}
+
+.Open__Form{
+    display: flex !important;
+}

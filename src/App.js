@@ -1,23 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import CustomAlerts from './components/alerts/CustomAlerts';
+import NavBar from './components/navbar/NavBar';
+import QuizPanel from './components/panel/QuizPanel';
+import AdminWindow from './components/windows/AdminWindow';
+import AddQuestion from './components/panel/AddQuestion';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <NavBar />
+      
+        <AdminWindow />
+       
     </div>
   );
 }

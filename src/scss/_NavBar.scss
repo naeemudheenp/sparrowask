@@ -1,0 +1,14 @@
+@use 'globals';
+.NavBar{
+    display: flex;
+    padding: 2vh;
+    padding-inline: 4vw;
+    background-color: globals.$BackgroundColor;
+    border: none;
+
+    &__Logo{
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.5rem;
+        color: white;
+    }
+}

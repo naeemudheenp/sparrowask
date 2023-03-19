@@ -1,0 +1,16 @@
+@use 'globals';
+.QuizPanel{
+   
+    overflow: auto;
+    border-right: 1px solid globals.$BackgroundColor;
+    min-width: 35vw;
+
+    padding: 2%;
+
+
+    max-height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+}

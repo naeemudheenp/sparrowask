@@ -1,0 +1,52 @@
+@use 'globals';
+.QuestionPanel{
+    overflow: auto;
+  
+    min-width: 35vw;
+
+    padding: 2%;
+    max-height: 90vh;
+
+
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+
+    &__Items{
+        display: flex;
+        gap: 2vw;
+
+        justify-content: center;
+        align-items: center;
+
+        &_Arrows{
+            display: flex;
+            flex-direction: column;
+            gap: 2vh;
+         &_Arrow{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: globals.$BackgroundColor;
+            padding: 6%;
+            min-height: 4vh;
+            min-width: 4vh;
+            color: white;
+            border-radius: 50%;
+         }
+        }
+    }
+
+    &__Header{
+        display: flex;
+        text-align: left;
+        justify-content: center;
+        flex-direction: column;
+
+        background-color: #EAF5FF;
+
+        border-radius: 10px;
+        padding: 3%;
+        gap: 1vh;
+    }
+}
