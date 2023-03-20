@@ -20,7 +20,7 @@ export default function QuestionPanel() {
 
   useEffect(() => {
     if (QuizId1.state != null && QuizId1.state != "[object Object]") {
-      alert(QuizId1.state);
+     
       SetQuiz(QuizId1.state);
       GetQuestions();
     }
