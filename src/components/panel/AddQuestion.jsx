@@ -1,5 +1,5 @@
 import { QuestionClass } from "../../classes/QuestionClass";
-import { useState,useEffect, } from "react";
+import { useState,useEffect,useId } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { SetAlert, DisableAlert,SetId } from "../../actions";
 import axios from "axios";
@@ -11,6 +11,7 @@ export default function AddQuestion( props) {
  
 
    const [input,setInput]= useState();
+   const [text,setText]= useState("");
    const [Visibility,setVisibility] = useState("");
    const [Bot,setBot] = useState("Bot_Hidden")
   
@@ -25,6 +26,11 @@ export default function AddQuestion( props) {
    const [Type,setType] = useState("");
    const [Answers,setAnswers] = useState([]);
    const [Correct,setCorrect] = useState([]);
+
+   const id1 = useId();
+   const id2 = useId();
+   const id3 = useId();
+   const id4 = useId();
 
    let QuizId = useSelector((state) => state.selectedtId);
   
@@ -76,8 +82,8 @@ export default function AddQuestion( props) {
         }, 1000);
         return;
     }
-
-    axios.get(`http://localhost:3001/quiz/${props.id}/`).then(resp => {
+    
+    axios.get( process.env.REACT_APP_BASE_URL +props.id).then(resp => {
         FinalQuestion.Question=Question;
         FinalQuestion.Type =Type;
         FinalQuestion.Answers =Correct;
@@ -86,7 +92,7 @@ export default function AddQuestion( props) {
     resp.data.questions.push(
         FinalQuestion
     )
-    axios.patch(`http://localhost:3001/quiz/${props.id}/`, {
+    axios.patch( process.env.REACT_APP_BASE_URL +props.id, {
         questions:resp.data.questions
 }).then(resp => {
     setBot("Bot_Hidden");
@@ -111,18 +117,17 @@ export default function AddQuestion( props) {
       dispatch(DisableAlert());
     }, 1000);
 
-    console.log(resp.data);
-  
+    
 }).catch(error => {
 
-    console.log(error);
+ 
 });
 
     
-    console.log(resp.data.questions);
+ 
 }).catch(error => {
 
-    console.log(error);
+   
 });
         
 
@@ -133,8 +138,28 @@ export default function AddQuestion( props) {
     <div className="AddQuestion">
             <div className={Bot}>
             <div className="AddQuestion__Chat__Header">
-          <i className="fa-solid fa-robot"></i>
-          SparrowBot - {props.title}
+            <div className="AddQuestion__Chat__Header_Panel">
+            <div>
+            <i className="fa-solid fa-robot"></i>
+          SparrowBot
+            </div>
+                <div onClick={
+                    ()=>{
+                        setBot("Bot_Hidden");
+                        setAnswers([])
+                        setCorrect([])
+                        setQuestion("")
+                        setLimit(0)
+                        setOption(0)
+                        setField(0)
+                        setChat(0)
+                        setVisibility("")
+                        setStop(0)
+                        
+
+                    }
+                } className="AddQuestion__Chat__Header_Panel_Close"><i class="fa-solid fa-minus"></i></div>
+            </div>
         </div>
       <div className="AddQuestion__Chat">
        
@@ -157,11 +182,11 @@ export default function AddQuestion( props) {
         {Dynamic.slice(0,Limit).map(()=>{
             return(
                 <>
-                   <div className="AddQuestion__Chat_Main">
+                   <div key={id4+Limit+"td"}  className="AddQuestion__Chat_Main">
         <i className="fa-solid fa-robot"></i> <div> Please Choose Question Type ?</div>
         </div>
        
-        <div className="AddQuestion__Chat_Types">
+        <div key={id4+Limit+"td123"}  className="AddQuestion__Chat_Types">
             <div onClick={()=>{
                 SetterType("DropDown")
             }} className="AddQuestion__Chat_Types_Type">
@@ -188,11 +213,11 @@ export default function AddQuestion( props) {
 {Dynamic.slice(0,OptionLimit).map(()=>{
             return(
                 <>
-                   <div className="AddQuestion__Chat_Main">
+                   <div key={id1+Limit} className="AddQuestion__Chat_Main">
         <i className="fa-solid fa-robot"></i> <div> Enter Options and Mark Options Which Are Correct. Press STOP When finished.</div>
         </div>
        
-      
+    
                 </>
             )
         })}
@@ -201,7 +226,7 @@ export default function AddQuestion( props) {
             return(
                 <>
                   
-        <div className={Visibility}>
+        <div key={id2+FieldLimit} className={Visibility}>
         <div> {Question}</div>
         </div>
 
@@ -216,7 +241,7 @@ export default function AddQuestion( props) {
 
                 return(
                     Type=="CheckBox" ? (
-                        <div className="AddQuestion__Chat_Replay">
+                        <div key={id3+index+"ch"} className="AddQuestion__Chat_Replay">
                     <input name="ss" type="checkbox" value={index+1} onChange={(e)=>{
                         let temp = []
                         temp.push(e.target.value)
@@ -224,11 +249,11 @@ export default function AddQuestion( props) {
                            arr=>[...arr,e.target.value]
 
                         )
-                        alert(Correct)
+                      
                     }}></input>
                     Option {index+1} : {elements}</div>
                     ):(
-                    <div className="AddQuestion__Chat_Replay">
+                    <div key={id3+index+"mn"}  className="AddQuestion__Chat_Replay">
                     <input name="ss" type="radio" value={index+1} onChange={(e)=>{
                         let temp = []
                         temp.push(e.target.value)
@@ -236,7 +261,7 @@ export default function AddQuestion( props) {
                            temp
 
                         )
-                        alert(Correct)
+                       
                     }}></input>
                     Option {index+1} : {elements}</div>)
                 );
@@ -247,8 +272,8 @@ export default function AddQuestion( props) {
         {
             Dynamic.slice(0,StopLimit).map(()=>{
                 return(
-                    <button className="AddQuestion__Chat_Stop" onClick={()=>{
-                        alert("hy")
+                    <button key={id3+StopLimit+"ch"}  className="AddQuestion__Chat_Stop" onClick={()=>{
+                   
                         SaveData()}}>STOP  & SAVE</button>
                 )
             })
@@ -261,12 +286,17 @@ export default function AddQuestion( props) {
 
       </div>
       <div className="AddQuestion__Chat_Input">
-            <input onChange={(e)=>{
+            <input 
+            value={text}
+            onChange={(e)=>{
                 setInput(e.target.value)
+                setText(e.target.value)
             }} type="text"></input>
             <button onClick={(e)=>{
                 e.target.value="";
-                UpdateChat()}}>Send</button>
+                UpdateChat();
+                setText("")
+                }}>Send</button>
         </div>
             </div>
       <div onClick={()=>{

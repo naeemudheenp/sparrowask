@@ -21,7 +21,7 @@ export default function AddQuiz() {
     }
 
     axios
-      .post("http://localhost:3001/quiz", {
+      .post( process.env.REACT_APP_BASE_URL , {
         questions:[],
         title:Title,
         description : Desc,

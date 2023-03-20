@@ -9,6 +9,7 @@ import { SetId } from "../../actions";
 export default function QuizPanel() {
 
   const [Quizes, SetQuizes] = useState([]);
+
   let ClassAlert = useSelector(state => state.customAlert)
   const dispatch = useDispatch();
   const id = useId();
@@ -24,7 +25,7 @@ export default function QuizPanel() {
   
     let data;
 
-   await axios.get('http://localhost:3001/quiz')
+   await axios.get( process.env.REACT_APP_BASE_URL )
     .then(resp => {
         data = resp.data;
 
@@ -53,7 +54,7 @@ export default function QuizPanel() {
               
         ):(
             <div className="QuizPanel__Error">
-                none
+                Quiz Empty.Please Add.
             </div>
         ) 
     }

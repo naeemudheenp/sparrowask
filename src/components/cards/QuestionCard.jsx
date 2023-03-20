@@ -1,6 +1,6 @@
 import { useId } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SetAlert, DisableAlert } from "../../actions";
+import { SetAlert, DisableAlert,SetId } from "../../actions";
 import axios from "axios";
 export default function QuestionCard(props) {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ export default function QuestionCard(props) {
   function DeleteQuestion() {
  
     axios
-    .get(`http://localhost:3001/quiz/${QuizId.state}`)
+    .get(process.env.REACT_APP_BASE_URL + QuizId.state)
     .then((resp) => {
       let arr = resp.data.questions;
 
@@ -26,15 +26,12 @@ export default function QuestionCard(props) {
       arr.splice(props.index,1)
 
       axios
-        .patch(`http://localhost:3001/quiz/${QuizId.state}`, {
+        .patch(process.env.REACT_APP_BASE_URL + QuizId.state, {
           questions: arr,
         })
         .then((resp) => {
-          dispatch(SetAlert("Question Deleted"));
-
-          const timer = setTimeout(() => {
-            dispatch(DisableAlert());
-          }, 1000);
+          dispatch(SetId(QuizId.state))
+         
 
           console.log(resp.data);
         })
@@ -62,13 +59,13 @@ export default function QuestionCard(props) {
         {props.Question.Options.map((element, index) => {
           if (props.Question.Answers.includes(`${index + 1}`)) {
             return (
-              <div key={id1} className="QuestionCard__Options_Option_correct">
+              <div key={id1+element+index} className="QuestionCard__Options_Option_correct">
                 {element}
               </div>
             );
           }
           return (
-            <div key={id2} className="QuestionCard__Options_Option">
+            <div key={id2+element+index} className="QuestionCard__Options_Option">
               {element}
             </div>
           );

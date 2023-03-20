@@ -24,7 +24,7 @@ export default function UserPanel() {
     let data;
 
     await axios
-      .get(`http://localhost:3001/quiz/${id}`)
+      .get( process.env.REACT_APP_BASE_URL +id)
       .then((resp) => {
         data = resp.data;
       })
@@ -40,7 +40,7 @@ export default function UserPanel() {
     let data;
 
     await axios
-      .get(`http://localhost:3001/quiz/${id}`)
+      .get( process.env.REACT_APP_BASE_URL +id)
       .then((resp) => {
         data = resp.data;
       })
@@ -52,15 +52,21 @@ export default function UserPanel() {
 
     data.questions.map((element, index) => {
       let orginal = element.Answers.sort().toString();
-
-      SelectedAnswers.answer.map((elemnt) => {
-        let given = elemnt.toString();
+      let given;
+      if(typeof(SelectedAnswers.answer[index])==typeof([])){
+         given =   SelectedAnswers.answer[index].sort().toString();
+      }else{
+         given =   SelectedAnswers.answer[index].toString();
+      }
+    
         if (orginal == given) {
           correct++;
+       
         }
-      });
+   
     });
-    let FinalCorrect = correct/3;
+  
+    let FinalCorrect = correct;
     let Percentage =  (FinalCorrect/data.questions.length)*100;
     let PassPercentage = data.percentage;
     
@@ -74,7 +80,7 @@ export default function UserPanel() {
     Result=JSON.stringify(Result)
     console.log(`Result is ${Result.result}`)
     localStorage.setItem(data.id,Result)
-    window.open(`http://localhost:3000/Result/${data.id}`);
+    window.open( process.env.REACT_APP_BASE_URL2+"result/" +data.id);
   }
   return (
     <div className="UserPanel">
@@ -151,7 +157,7 @@ export default function UserPanel() {
                         name="radio"
                         Value={parseInt(index)}
                       ></input>
-                      {opt}
+                      {opt}<br></br>
                     </>
                   );
                 })}
@@ -167,7 +173,7 @@ export default function UserPanel() {
                 {element.Options.map((opt, index) => {
                   return (
                     <>
-                      hh :{opt}
+                      
                       <input
                         onClick={(e) => {
                           SetValue((arr) => [
@@ -178,7 +184,7 @@ export default function UserPanel() {
                         type="checkbox"
                         name="radio"
                         Value={parseInt(index)}
-                      ></input>
+                      ></input>{opt}<br></br>
                     </>
                   );
                 })}

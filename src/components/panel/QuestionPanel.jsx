@@ -26,8 +26,11 @@ export default function QuestionPanel() {
 
   useEffect(() => {
 
-      SetQuiz(QuizId1.state);
+      if(QuizId1.state!=null && QuizId1.state!="[object Object]"){
+        alert(QuizId1.state)
+        SetQuiz(QuizId1.state);
       GetQuestions(); 
+      }
         
     
     
@@ -40,7 +43,7 @@ export default function QuestionPanel() {
     let data;
 
     await axios
-      .get(`http://localhost:3001/quiz/${QuizId1.state}`)
+      .get( process.env.REACT_APP_BASE_URL +QuizId1.state)
       .then((resp) => {
         data = resp.data;
       })
@@ -53,9 +56,14 @@ export default function QuestionPanel() {
   }
 
   function MoveUp(index) {
+
+    if(Questions.length<=1){
+      alert("Cannot Move.Reached End");
+      return
+    }
    
     axios
-      .get(`http://localhost:3001/quiz/${QuizId1.state}`)
+      .get( process.env.REACT_APP_BASE_URL +QuizId1.state)
       .then((resp) => {
         let arr = resp.data.questions;
 
@@ -66,7 +74,7 @@ export default function QuestionPanel() {
         arr[index - 1] = temp;
 
         axios
-          .patch(`http://localhost:3001/quiz/${QuizId1.state}`, {
+          .patch( process.env.REACT_APP_BASE_URL +QuizId1.state, {
             questions: arr,
           })
           .then((resp) => {
@@ -91,8 +99,12 @@ export default function QuestionPanel() {
   }
 
   function MoveDown(index) {
+    if(Questions.length<=1){
+      alert("Cannot Move.Reached End");
+      return
+    }
     axios
-      .get(`http://localhost:3001/quiz/${QuizId1.state}`)
+      .get( process.env.REACT_APP_BASE_URL +QuizId1.state)
       .then((resp) => {
         let arr = resp.data.questions;
 
@@ -103,7 +115,7 @@ export default function QuestionPanel() {
         arr[index + 1] = temp;
 
         axios
-          .patch(`http://localhost:3001/quiz/${QuizId1.state}`, {
+          .patch( process.env.REACT_APP_BASE_URL +QuizId1.state, {
             questions: arr,
           })
           .then((resp) => {
@@ -135,15 +147,10 @@ export default function QuestionPanel() {
           <div>Pass Percentage : {Basic.percentage}</div>
 
           <div>
-            <button
-            onClick={()=>{
-              
-              
-              GetQuestions();
-            }
-            }
-            >Refresh</button>
-            <button>Share</button>
+         
+            <button onClick={()=>{
+               window.open( process.env.REACT_APP_BASE_URL2+"user/"+Basic.id);
+            }}>Share/Attempt</button>
           </div>
         </div>
       )}
@@ -162,7 +169,7 @@ export default function QuestionPanel() {
                     }}
                     className="QuestionPanel__Items_Arrows_Arrow"
                   >
-                    <i class="fa-solid fa-arrow-down"></i>
+                    <i className="fa-solid fa-arrow-down"></i>
                   </div>
                 </div>
                 <QuestionCard  Question={element} index={index} />

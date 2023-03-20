@@ -3,22 +3,27 @@
     {
       "questions": [
         {
-          "Question": "What is your naeem",
+          "Question": "What is surveysparrow ?",
           "QuestionType": "",
           "Options": [
-            "OptionA",
-            "OptionB"
+            "Food Delivey",
+            "Survey Management",
+            "Employ Feedback ",
+            "Online Bank"
           ],
           "Answers": [
-            "1"
+            "2",
+            "3"
           ],
-          "Type": "DropDown"
+          "Type": "CheckBox"
         },
         {
-          "Question": "fd",
+          "Question": "Choose the correct location of surveysparrow ?",
           "QuestionType": "",
           "Options": [
-            "fd"
+            "Kochi",
+            "kollam",
+            "calicut"
           ],
           "Answers": [
             "1"
@@ -26,26 +31,24 @@
           "Type": "Radio"
         },
         {
-          "Question": "fd",
+          "Question": "When was surveysparrow founded ?",
           "QuestionType": "",
           "Options": [
-            "fd",
-            "fh"
+            "2017",
+            "2018",
+            "2019",
+            "2020"
           ],
           "Answers": [
             "1"
           ],
-          "Type": " CheckBox"
+          "Type": "DropDown"
         }
-      
-       
-       
       ],
-      "title": "ds",
-      "description": "ds",
-      "percentage": "22",
-      "id": 37
+      "title": "SurveySparrow",
+      "description": "Quiz About SurveySparrow",
+      "percentage": "20",
+      "id": 1
     }
-    
   ]
 }

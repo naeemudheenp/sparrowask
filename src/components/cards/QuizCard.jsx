@@ -8,9 +8,9 @@ export default function QuizCard({ Quiz }) {
 
   function DeleteQuiz(QuizId) {
     
-
+   
     axios
-      .delete(`http://localhost:3001/quiz/${QuizId}/`)
+      .delete( process.env.REACT_APP_BASE_URL +QuizId)
       .then((resp) => {
         
         dispatch(SetAlert("Quiz Deleted"));
