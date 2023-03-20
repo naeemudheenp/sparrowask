@@ -3,91 +3,17 @@
     {
       "questions": [
         {
-          "Question": "dssdsd",
+          "Question": "What is your naeem",
           "QuestionType": "",
           "Options": [
-            "dssdsdds"
-          ],
-          "Answers": [
-            "1"
-          ],
-          "Type": "CheckBox"
-        },
-        {
-          "Question": "sfd",
-          "QuestionType": "",
-          "Options": [
-            "sfdd"
+            "OptionA",
+            "OptionB"
           ],
           "Answers": [
             "1"
           ],
           "Type": "DropDown"
         },
-        {
-          "Question": "dssd",
-          "QuestionType": "",
-          "Options": [
-            "dssdsd"
-          ],
-          "Answers": [
-            "1"
-          ],
-          "Type": "DropDown"
-        },
-        {
-          "Question": "ds",
-          "QuestionType": "",
-          "Options": [
-            "dssd"
-          ],
-          "Answers": [
-            "1"
-          ],
-          "Type": "DropDown"
-        },
-        {
-          "Question": "dfd",
-          "QuestionType": "",
-          "Options": [
-            "dfd"
-          ],
-          "Answers": [
-            "1"
-          ],
-          "Type": "CheckBox"
-        },
-        {
-          "Question": "fdf",
-          "QuestionType": "",
-          "Options": [
-            "fdfdf"
-          ],
-          "Answers": [
-            "1"
-          ],
-          "Type": "DropDown"
-        },
-        {
-          "Question": "ceo",
-          "QuestionType": "",
-          "Options": [
-            "naeem",
-            "naeem"
-          ],
-          "Answers": [
-            "2"
-          ],
-          "Type": "DropDown"
-        }
-      ],
-      "title": "DW",
-      "description": "DW",
-      "percentage": "33",
-      "id": 36
-    },
-    {
-      "questions": [
         {
           "Question": "fd",
           "QuestionType": "",
@@ -100,71 +26,26 @@
           "Type": "Radio"
         },
         {
-          "Question": "fdfdffd",
+          "Question": "fd",
           "QuestionType": "",
           "Options": [
-            "fdfdffdfd",
-            "fdfdffdfd"
+            "fd",
+            "fh"
           ],
           "Answers": [
             "1"
           ],
-          "Type": "DropDown"
-        },
-        {
-          "Question": "fdsd",
-          "QuestionType": "",
-          "Options": [
-            "fdsdsd"
-          ],
-          "Answers": [
-            "1"
-          ],
-          "Type": "DropDown"
-        },
-        {
-          "Question": "sd",
-          "QuestionType": "",
-          "Options": [
-            "sddsdsdsdsdsdsdsd",
-            "sddsdsdsdsdsdsdsd"
-          ],
-          "Answers": [
-            "1"
-          ],
-          "Type": "DropDown"
+          "Type": " CheckBox"
         }
+      
+       
+       
       ],
       "title": "ds",
       "description": "ds",
       "percentage": "22",
       "id": 37
-    },
-    {
-      "questions": [
-        {
-          "Question": "df",
-          "QuestionType": "",
-          "Options": [
-            "dfdsd"
-          ],
-          "Answers": [
-            "1"
-          ],
-          "Type": "CheckBox"
-        }
-      ],
-      "title": "sd",
-      "description": "sd",
-      "percentage": "23",
-      "id": 38
-    },
-    {
-      "questions": [],
-      "title": "sf",
-      "description": "sf",
-      "percentage": "33",
-      "id": 39
     }
+    
   ]
 }

@@ -25,3 +25,12 @@ export function SetId(message){
         
     }
 }
+export function SetAnswer(message){
+ 
+    return {
+        payLoad:message,
+        type:'SetAnswer',
+     
+        
+    }
+}

@@ -55,6 +55,7 @@ export default function QuizCard({ Quiz }) {
         }}
       ></i>
       <button onClick={()=>{
+      
         dispatch(SetId(Quiz.id))
        
       }}>Select</button>

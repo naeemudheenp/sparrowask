@@ -305,6 +305,10 @@
   min-width: 4vh;
   color: white;
   border-radius: 50%;
+  transition: all 0.5s;
+}
+.QuestionPanel__Items_Arrows_Arrow:hover {
+  transform: scale(1.3);
 }
 .QuestionPanel__Header {
   display: flex;
@@ -315,6 +319,18 @@
   border-radius: 10px;
   padding: 3%;
   gap: 1vh;
+}
+.QuestionPanel__Header div {
+  display: flex;
+  gap: 1vw;
+}
+.QuestionPanel__Header button {
+  background-color: #0275FF;
+  border: none;
+  min-height: 4vh;
+  color: white;
+  border-radius: 10px;
+  min-width: 10vw;
 }
 
 .QuestionCard {
@@ -388,6 +404,102 @@
   font-size: 1.2rem;
   margin-left: 7%;
   font-weight: bold;
+}
+
+.UserPanel {
+  overflow: auto;
+  display: flex;
+  margin-inline: 30%;
+  flex-direction: column;
+  margin-top: 3%;
+  min-width: 10vw;
+  max-height: 90vh;
+}
+.UserPanel__Header {
+  background-color: #0275FF;
+  padding: 3%;
+  display: flex;
+  align-items: flex-start;
+  gap: 1vw;
+  color: white;
+  font-weight: bold;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.UserPanel button {
+  background-color: #0275FF;
+  border: none;
+  margin-top: 14%;
+  min-height: 6vh;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.UserPanel__Answer {
+  background-color: #EAF5FF;
+  position: relative;
+  color: black;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  font-family: "Inter", sans-serif;
+  width: 60%;
+  padding: 2%;
+  margin-bottom: 2vh;
+  text-align: left;
+}
+.UserPanel__Answer_Option {
+  margin-top: 2vh;
+}
+.UserPanel__Answer_Option select {
+  border: none;
+  min-width: 40%;
+  font-size: 1rem;
+  min-height: 4vh;
+}
+.UserPanel__End {
+  display: flex;
+  flex-direction: column;
+}
+
+.ResultPanel {
+  display: flex;
+  margin-inline: 35%;
+  margin-top: 10%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #0275FF;
+  color: white;
+  padding: 5%;
+  border-radius: 10px;
+}
+.ResultPanel__Result {
+  display: flex;
+  gap: 2vh;
+  flex-direction: column;
+}
+.ResultPanel__Result i {
+  font-size: 7rem;
+  color: white;
+}
+.ResultPanel__Result_Header {
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+}
+.ResultPanel__Result_Info {
+  background-color: #EAF5FF;
+  color: black;
+  padding: 2%;
+  border-radius: 10px;
+  gap: 1vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.Fail {
+  background-color: red;
 }
 
 html, body {

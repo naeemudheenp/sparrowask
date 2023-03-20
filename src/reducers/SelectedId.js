@@ -1,5 +1,7 @@
 function selectedtId(state = null, action) {
+ 
   switch (action.type) {
+   
     case "SetId":
       return {state:action.payLoad};
 

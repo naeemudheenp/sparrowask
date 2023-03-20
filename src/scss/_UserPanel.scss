@@ -1,0 +1,83 @@
+@use 'globals';
+.UserPanel{
+    overflow: auto;
+    display: flex;
+    margin-inline: 30%;
+    flex-direction: column;
+    margin-top: 3%;
+    min-width: 10vw;
+   
+    max-height: 90vh;
+
+   
+    &__Header{
+        
+        background-color: globals.$BackgroundColor;   
+        padding: 3%;
+          
+    
+        display: flex;
+        align-items: flex-start;
+
+        gap: 1vw;
+        color: white;
+
+        font-weight: bold;
+        
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+
+  
+        
+       
+
+
+     
+    }
+    button{
+        background-color: globals.$BackgroundColor;
+        border: none;
+        margin-top: 14%;
+        min-height: 6vh;
+        border-radius: 10px;
+        color: white;
+        font-weight: bold;
+        font-size: 1.0rem;
+    }
+    &__Answer{
+        background-color: #EAF5FF;
+        position: relative;
+        color: black;
+        border-top-right-radius: 1rem;
+        border-top-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        font-family: 'Inter', sans-serif;
+        width: 60%;
+
+        padding: 2%;
+
+        
+
+        margin-bottom: 2vh;
+        text-align: left;
+
+        &_Option{
+            margin-top: 2vh;
+            select{
+                border: none;
+                min-width: 40%;
+                font-size: 1rem;
+                min-height: 4vh
+            }
+            
+        }
+        
+     
+    }
+    &__End{
+        display: flex;
+        flex-direction: column;
+    }
+    
+
+}

@@ -1,10 +1,10 @@
 import { QuestionClass } from "../../classes/QuestionClass";
 import { useState,useEffect, } from "react";
 import { useDispatch,useSelector } from "react-redux";
-import { SetAlert, DisableAlert } from "../../actions";
+import { SetAlert, DisableAlert,SetId } from "../../actions";
 import axios from "axios";
 
-export default function AddQuestion( {title}) {
+export default function AddQuestion( props) {
    let FinalQuestion =new QuestionClass();
 
    const dispatch = useDispatch();
@@ -77,7 +77,7 @@ export default function AddQuestion( {title}) {
         return;
     }
 
-    axios.get(`http://localhost:3001/quiz/${QuizId.state}/`).then(resp => {
+    axios.get(`http://localhost:3001/quiz/${props.id}/`).then(resp => {
         FinalQuestion.Question=Question;
         FinalQuestion.Type =Type;
         FinalQuestion.Answers =Correct;
@@ -86,7 +86,7 @@ export default function AddQuestion( {title}) {
     resp.data.questions.push(
         FinalQuestion
     )
-    axios.patch(`http://localhost:3001/quiz/${QuizId.state}/`, {
+    axios.patch(`http://localhost:3001/quiz/${props.id}/`, {
         questions:resp.data.questions
 }).then(resp => {
     setBot("Bot_Hidden");
@@ -100,7 +100,9 @@ export default function AddQuestion( {title}) {
     setVisibility("")
     setStop(0)
     
-    
+  
+    dispatch(SetId(props.id))    
+    props.id=0    
     dispatch(SetAlert("Question Added"));
     
 
@@ -132,13 +134,13 @@ export default function AddQuestion( {title}) {
             <div className={Bot}>
             <div className="AddQuestion__Chat__Header">
           <i className="fa-solid fa-robot"></i>
-          SparrowBot - {title}
+          SparrowBot - {props.title}
         </div>
       <div className="AddQuestion__Chat">
        
         <div className="AddQuestion__Chat_Main">
         <i style={{visibility: "hidden"}} className="fa-solid fa-robot"></i> <div> Hey ! I am SparrowBot. 
-            Selected quiz is {title}
+            Selected quiz is {props.title}
             I will help you in building questions. :)</div>
         </div>
 
@@ -268,7 +270,7 @@ export default function AddQuestion( {title}) {
         </div>
             </div>
       <div onClick={()=>{
-        alert(QuizId.state)
+       
         if(QuizId.state==null){
             alert("Please select a quiz")
         }else{
@@ -276,7 +278,9 @@ export default function AddQuestion( {title}) {
         }
       
     
-    } className="AddQuestion__Float">+</div>
+    } 
+    
+    className="AddQuestion__Float">+</div>
     </div>
   );
 }
