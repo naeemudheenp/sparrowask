@@ -1,41 +1,41 @@
-@use 'globals';
-.ResultPanel{
+@use "globals";
+.ResultPanel {
+  display: flex;
+  margin-inline: 35%;
+  margin-top: 10%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #0275ff;
+  color: white;
+  padding: 5%;
+  border-radius: 10px;
+
+  &__Result {
     display: flex;
-    margin-inline: 35%;
-    margin-top: 10%;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #0275FF;;
-    color: white;
-    padding: 5%;
-    border-radius: 10px;
+    gap: 2vh;
+    flex-direction: column;
 
-    &__Result{
-        display: flex;
-        gap: 2vh;
-        flex-direction: column;
-
-        i{
-            font-size: 7rem;
-            color: white;
-        }
-        &_Header{
-            font-size: 1.5rem;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        &_Info{
-            background-color: #EAF5FF;
-            color: black;
-            padding: 2%;
-            border-radius: 10px;
-            gap: 1vh;
-            display: flex;
-            flex-direction:column;
-        }
+    i {
+      font-size: 7rem;
+      color: white;
     }
+    &_Header {
+      font-size: 1.5rem;
+      font-family: "Poppins", sans-serif;
+    }
+
+    &_Info {
+      background-color: #eaf5ff;
+      color: black;
+      padding: 2%;
+      border-radius: 10px;
+      gap: 1vh;
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }
-.Fail{
-    background-color: red;
+.Fail {
+  background-color: red;
 }

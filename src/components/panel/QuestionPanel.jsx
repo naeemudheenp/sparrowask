@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import QuestionCard from "../cards/QuestionCard";
 import AddQuestion from "./AddQuestion";
 
-import { SetAlert, DisableAlert, SetId } from "../../actions";
+import { SetId } from "../../actions";
 export default function QuestionPanel() {
   const dispatch = useDispatch();
   let ClassAlert = useSelector((state) => state.customAlert);
@@ -17,33 +17,21 @@ export default function QuestionPanel() {
   const [Basic, SetBasic] = useState(undefined);
   const [Title, SetTile] = useState("none");
   const [QuizId, SetQuiz] = useState();
-  const [Refresh,SetRefresh] = useState("");
- 
-
-
-
-  
 
   useEffect(() => {
-
-      if(QuizId1.state!=null && QuizId1.state!="[object Object]"){
-        alert(QuizId1.state)
-        SetQuiz(QuizId1.state);
-      GetQuestions(); 
-      }
-        
-    
-    
-  }, [ClassAlert, QuizId1 ]);
+    if (QuizId1.state != null && QuizId1.state != "[object Object]") {
+      alert(QuizId1.state);
+      SetQuiz(QuizId1.state);
+      GetQuestions();
+    }
+  }, [ClassAlert, QuizId1]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   async function GetQuestions() {
-   
-   
     let data;
 
     await axios
-      .get( process.env.REACT_APP_BASE_URL +QuizId1.state)
+      .get(process.env.REACT_APP_BASE_URL + QuizId1.state)
       .then((resp) => {
         data = resp.data;
       })
@@ -56,14 +44,13 @@ export default function QuestionPanel() {
   }
 
   function MoveUp(index) {
-
-    if(Questions.length<=1){
+    if (Questions.length <= 1) {
       alert("Cannot Move.Reached End");
-      return
+      return;
     }
-   
+
     axios
-      .get( process.env.REACT_APP_BASE_URL +QuizId1.state)
+      .get(process.env.REACT_APP_BASE_URL + QuizId1.state)
       .then((resp) => {
         let arr = resp.data.questions;
 
@@ -74,12 +61,11 @@ export default function QuestionPanel() {
         arr[index - 1] = temp;
 
         axios
-          .patch( process.env.REACT_APP_BASE_URL +QuizId1.state, {
+          .patch(process.env.REACT_APP_BASE_URL + QuizId1.state, {
             questions: arr,
           })
           .then((resp) => {
-            dispatch(SetId(QuizId1.state))
-            
+            dispatch(SetId(QuizId1.state));
 
             console.log(resp.data);
           })
@@ -92,19 +78,15 @@ export default function QuestionPanel() {
       .catch((error) => {
         console.log(error);
       });
-
-     
-
-      
   }
 
   function MoveDown(index) {
-    if(Questions.length<=1){
+    if (Questions.length <= 1) {
       alert("Cannot Move.Reached End");
-      return
+      return;
     }
     axios
-      .get( process.env.REACT_APP_BASE_URL +QuizId1.state)
+      .get(process.env.REACT_APP_BASE_URL + QuizId1.state)
       .then((resp) => {
         let arr = resp.data.questions;
 
@@ -115,12 +97,11 @@ export default function QuestionPanel() {
         arr[index + 1] = temp;
 
         axios
-          .patch( process.env.REACT_APP_BASE_URL +QuizId1.state, {
+          .patch(process.env.REACT_APP_BASE_URL + QuizId1.state, {
             questions: arr,
           })
           .then((resp) => {
-            dispatch(SetId(QuizId1.state))
-            
+            dispatch(SetId(QuizId1.state));
 
             console.log(resp.data);
           })
@@ -133,7 +114,6 @@ export default function QuestionPanel() {
       .catch((error) => {
         console.log(error);
       });
-   
   }
 
   return (
@@ -147,10 +127,15 @@ export default function QuestionPanel() {
           <div>Pass Percentage : {Basic.percentage}</div>
 
           <div>
-         
-            <button onClick={()=>{
-               window.open( process.env.REACT_APP_BASE_URL2+"user/"+Basic.id);
-            }}>Share/Attempt</button>
+            <button
+              onClick={() => {
+                window.open(
+                  process.env.REACT_APP_BASE_URL2 + "user/" + Basic.id
+                );
+              }}
+            >
+              Share/Attempt
+            </button>
           </div>
         </div>
       )}
@@ -172,7 +157,7 @@ export default function QuestionPanel() {
                     <i className="fa-solid fa-arrow-down"></i>
                   </div>
                 </div>
-                <QuestionCard  Question={element} index={index} />
+                <QuestionCard Question={element} index={index} />
               </div>
             );
           } else if (index + 1 == Questions.length) {
@@ -188,12 +173,12 @@ export default function QuestionPanel() {
                     <i className="fa-solid fa-arrow-up"></i>
                   </div>
                 </div>
-                <QuestionCard  Question={element} index={index} />
+                <QuestionCard Question={element} index={index} />
               </div>
             );
           } else {
             return (
-              <div key={`${index}${id1}`}  className="QuestionPanel__Items">
+              <div key={`${index}${id1}`} className="QuestionPanel__Items">
                 <div className="QuestionPanel__Items_Arrows">
                   <div
                     onClick={() => {

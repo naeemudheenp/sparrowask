@@ -1,49 +1,40 @@
 import { useId } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SetAlert, DisableAlert,SetId } from "../../actions";
+import { SetId } from "../../actions";
 import axios from "axios";
 export default function QuestionCard(props) {
   const dispatch = useDispatch();
   const id1 = useId();
   const id2 = useId();
 
- 
-
-
-  
- 
   let QuizId = useSelector((state) => state.selectedtId);
- 
 
   function DeleteQuestion() {
- 
     axios
-    .get(process.env.REACT_APP_BASE_URL + QuizId.state)
-    .then((resp) => {
-      let arr = resp.data.questions;
+      .get(process.env.REACT_APP_BASE_URL + QuizId.state)
+      .then((resp) => {
+        let arr = resp.data.questions;
 
-      
-      arr.splice(props.index,1)
+        arr.splice(props.index, 1);
 
-      axios
-        .patch(process.env.REACT_APP_BASE_URL + QuizId.state, {
-          questions: arr,
-        })
-        .then((resp) => {
-          dispatch(SetId(QuizId.state))
-         
+        axios
+          .patch(process.env.REACT_APP_BASE_URL + QuizId.state, {
+            questions: arr,
+          })
+          .then((resp) => {
+            dispatch(SetId(QuizId.state));
 
-          console.log(resp.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+            console.log(resp.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
 
-      console.log(resp.data.questions);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+        console.log(resp.data.questions);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   return (
@@ -59,13 +50,19 @@ export default function QuestionCard(props) {
         {props.Question.Options.map((element, index) => {
           if (props.Question.Answers.includes(`${index + 1}`)) {
             return (
-              <div key={id1+element+index} className="QuestionCard__Options_Option_correct">
+              <div
+                key={id1 + element + index}
+                className="QuestionCard__Options_Option_correct"
+              >
                 {element}
               </div>
             );
           }
           return (
-            <div key={id2+element+index} className="QuestionCard__Options_Option">
+            <div
+              key={id2 + element + index}
+              className="QuestionCard__Options_Option"
+            >
               {element}
             </div>
           );

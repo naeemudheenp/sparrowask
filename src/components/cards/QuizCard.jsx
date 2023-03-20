@@ -1,20 +1,14 @@
-
 import { useDispatch } from "react-redux";
 import { SetAlert, DisableAlert, SetId } from "../../actions";
 import axios from "axios";
 export default function QuizCard({ Quiz }) {
   const dispatch = useDispatch();
-  
 
   function DeleteQuiz(QuizId) {
-    
-   
     axios
-      .delete( process.env.REACT_APP_BASE_URL +QuizId)
+      .delete(process.env.REACT_APP_BASE_URL + QuizId)
       .then((resp) => {
-        
         dispatch(SetAlert("Quiz Deleted"));
-
 
         const timer = setTimeout(() => {
           dispatch(DisableAlert());
@@ -23,14 +17,12 @@ export default function QuizCard({ Quiz }) {
       .catch((error) => {
         console.log(error);
       });
-
- 
   }
 
   return (
     <div className="QuizCard">
       <div>
-       Title:
+        Title:
         {Quiz.title}
       </div>
       <div>
@@ -48,17 +40,19 @@ export default function QuizCard({ Quiz }) {
         <div></div>
       </div>
       <div className="QuizCard__Buttons">
-      <i
-        className="fa-solid fa-trash"
-        onClick={() => {
-          DeleteQuiz(Quiz.id);
-        }}
-      ></i>
-      <button onClick={()=>{
-      
-        dispatch(SetId(Quiz.id))
-       
-      }}>Select</button>
+        <i
+          className="fa-solid fa-trash"
+          onClick={() => {
+            DeleteQuiz(Quiz.id);
+          }}
+        ></i>
+        <button
+          onClick={() => {
+            dispatch(SetId(Quiz.id));
+          }}
+        >
+          Select
+        </button>
       </div>
     </div>
   );

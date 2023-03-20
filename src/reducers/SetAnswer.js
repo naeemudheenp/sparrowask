@@ -1,19 +1,18 @@
 const initialUserState = {
-    answer:[]
-}
+  answer: [],
+};
 
 function setAnswer(state = initialUserState, action) {
-let temp = [];
-temp[0]= action.payLoad
+  let temp = [];
+  temp[0] = action.payLoad;
 
   switch (action.type) {
     case "SetAnswer":
       return {
-       ...state,
+        ...state,
         answer: state.answer.concat(temp),
       };
-      
-     
+
     default:
       return state;
   }

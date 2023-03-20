@@ -1,4 +1,4 @@
-import { json, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,7 +13,7 @@ export default function UserPanel() {
   let SelectedAnswers = useSelector((state) => state.setAnswer);
   const [End, SetEnd] = useState(false);
   const dispatch = useDispatch();
-  let ClassAlert = useSelector((state) => state.setAnswer);
+
   let { id } = useParams();
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function UserPanel() {
     let data;
 
     await axios
-      .get( process.env.REACT_APP_BASE_URL +id)
+      .get(process.env.REACT_APP_BASE_URL + id)
       .then((resp) => {
         data = resp.data;
       })
@@ -40,7 +40,7 @@ export default function UserPanel() {
     let data;
 
     await axios
-      .get( process.env.REACT_APP_BASE_URL +id)
+      .get(process.env.REACT_APP_BASE_URL + id)
       .then((resp) => {
         data = resp.data;
       })
@@ -53,34 +53,37 @@ export default function UserPanel() {
     data.questions.map((element, index) => {
       let orginal = element.Answers.sort().toString();
       let given;
-      if(typeof(SelectedAnswers.answer[index])==typeof([])){
-         given =   SelectedAnswers.answer[index].sort().toString();
-      }else{
-         given =   SelectedAnswers.answer[index].toString();
+      if (typeof SelectedAnswers.answer[index] == typeof []) {
+        given = SelectedAnswers.answer[index].sort().toString();
+      } else {
+        given = SelectedAnswers.answer[index].toString();
       }
-    
-        if (orginal == given) {
-          correct++;
-       
-        }
-   
+
+      if (orginal == given) {
+        correct++;
+      }
     });
-  
+
     let FinalCorrect = correct;
-    let Percentage =  (FinalCorrect/data.questions.length)*100;
+    let Percentage = (FinalCorrect / data.questions.length) * 100;
     let PassPercentage = data.percentage;
-    
+
     let status;
-    if(Percentage>=PassPercentage){
-        status=true
-    }else{
-        status=false
+    if (Percentage >= PassPercentage) {
+      status = true;
+    } else {
+      status = false;
     }
-    let Result = new ResultClass(status,FinalCorrect,data.questions.length,Percentage);
-    Result=JSON.stringify(Result)
-    console.log(`Result is ${Result.result}`)
-    localStorage.setItem(data.id,Result)
-    window.open( process.env.REACT_APP_BASE_URL2+"result/" +data.id);
+    let Result = new ResultClass(
+      status,
+      FinalCorrect,
+      data.questions.length,
+      Percentage
+    );
+    Result = JSON.stringify(Result);
+    console.log(`Result is ${Result.result}`);
+    localStorage.setItem(data.id, Result);
+    window.open(process.env.REACT_APP_BASE_URL2 + "result/" + data.id);
   }
   return (
     <div className="UserPanel">
@@ -157,7 +160,8 @@ export default function UserPanel() {
                         name="radio"
                         Value={parseInt(index)}
                       ></input>
-                      {opt}<br></br>
+                      {opt}
+                      <br></br>
                     </>
                   );
                 })}
@@ -173,7 +177,6 @@ export default function UserPanel() {
                 {element.Options.map((opt, index) => {
                   return (
                     <>
-                      
                       <input
                         onClick={(e) => {
                           SetValue((arr) => [
@@ -184,7 +187,9 @@ export default function UserPanel() {
                         type="checkbox"
                         name="radio"
                         Value={parseInt(index)}
-                      ></input>{opt}<br></br>
+                      ></input>
+                      {opt}
+                      <br></br>
                     </>
                   );
                 })}

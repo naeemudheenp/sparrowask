@@ -1,4 +1,4 @@
-import { useState ,useEffect} from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { SetAlert, DisableAlert } from "../../actions";
 import axios from "axios";
@@ -8,7 +8,6 @@ export default function AddQuiz() {
   const [Title, SetTitle] = useState("");
   const [Desc, SetDesc] = useState("");
   const [Percentage, SetPercentage] = useState("");
-  
 
   function SaveData() {
     if (Title == "" || Desc == "" || Percentage == "") {
@@ -21,18 +20,17 @@ export default function AddQuiz() {
     }
 
     axios
-      .post( process.env.REACT_APP_BASE_URL , {
-        questions:[],
-        title:Title,
-        description : Desc,
-        percentage:Percentage,
-        
+      .post(process.env.REACT_APP_BASE_URL, {
+        questions: [],
+        title: Title,
+        description: Desc,
+        percentage: Percentage,
       })
       .then((resp) => {
         SetTitle("");
         SetDesc("");
         SetPercentage("");
-        SetOpen("AddQuiz__Form")
+        SetOpen("AddQuiz__Form");
         dispatch(SetAlert("Quiz Added."));
 
         const timer = setTimeout(() => {
@@ -48,20 +46,25 @@ export default function AddQuiz() {
   return (
     <div className="AddQuiz">
       <div className={Open}>
-        <input value={Title}
+        <input
+          value={Title}
           onChange={(e) => {
-            
             SetTitle(e.target.value);
           }}
           placeholder="Title"
         ></input>
-        <input value={Desc}
+        <input
+          value={Desc}
           onChange={(e) => {
             SetDesc(e.target.value);
           }}
           placeholder="Description"
         ></input>
-        <input type="number" min="1" max="100" value={Percentage}
+        <input
+          type="number"
+          min="1"
+          max="100"
+          value={Percentage}
           onChange={(e) => {
             SetPercentage(e.target.value);
           }}

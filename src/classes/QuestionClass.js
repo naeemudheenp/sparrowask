@@ -1,5 +1,4 @@
-export  class QuestionClass {
-
+export class QuestionClass {
   Question = "";
   QuestionType = "";
   Options = [];
@@ -25,8 +24,9 @@ export  class QuestionClass {
 
     this.Answers.sort();
     Arr.sort();
-    
-    if (equalsCheck(Arr, this.Answers)) alert("The arrays have the same elements.");
+
+    if (equalsCheck(Arr, this.Answers))
+      alert("The arrays have the same elements.");
     else alert("The arrays have different elements.");
   }
 }
