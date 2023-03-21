@@ -95,7 +95,7 @@ export default function AddQuestion(props) {
 
             dispatch(SetId(props.id));
             props.id = 0;
-            dispatch(SetAlert("Question Added"));
+            
 
             const timer = setTimeout(() => {
               dispatch(DisableAlert());

@@ -36,7 +36,7 @@ export default function QuestionPanel() {
         data = resp.data;
       })
       .catch((error) => {
-        console.log(error);
+        
       });
     SetBasic(data);
     SetTile(data.title);
@@ -67,16 +67,16 @@ export default function QuestionPanel() {
           .then((resp) => {
             dispatch(SetId(QuizId1.state));
 
-            console.log(resp.data);
+            
           })
           .catch((error) => {
-            console.log(error);
+           
           });
 
-        console.log(resp.data.questions);
+     
       })
       .catch((error) => {
-        console.log(error);
+        
       });
   }
 
@@ -103,16 +103,16 @@ export default function QuestionPanel() {
           .then((resp) => {
             dispatch(SetId(QuizId1.state));
 
-            console.log(resp.data);
+          
           })
           .catch((error) => {
-            console.log(error);
+          
           });
 
-        console.log(resp.data.questions);
+      
       })
       .catch((error) => {
-        console.log(error);
+       
       });
   }
 
