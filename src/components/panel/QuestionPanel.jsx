@@ -23,6 +23,8 @@ export default function QuestionPanel() {
      
       SetQuiz(QuizId1.state);
       GetQuestions();
+    }else{
+      alert("Please select a quiz.")
     }
   }, [ClassAlert, QuizId1]);
 
