@@ -34,8 +34,8 @@ export default function QuizPanel() {
 
   return (
     IsLoading ? (
-      <div>
-        <div class="lds-ripple"><div></div><div></div></div>
+      <div className="QuizPanel" >
+        <div class="loader"></div>
       </div>
     ):(
       <div className="QuizPanel">
