@@ -20,11 +20,10 @@ export default function QuestionPanel() {
 
   useEffect(() => {
     if (QuizId1.state != null && QuizId1.state != "[object Object]") {
-     
       SetQuiz(QuizId1.state);
       GetQuestions();
-    }else{
-      alert("Please select a quiz.")
+    } else {
+      alert("Please select a quiz.");
     }
   }, [ClassAlert, QuizId1]);
 
@@ -37,9 +36,7 @@ export default function QuestionPanel() {
       .then((resp) => {
         data = resp.data;
       })
-      .catch((error) => {
-        
-      });
+      .catch((error) => {});
     SetBasic(data);
     SetTile(data.title);
     SetQuestions(data.questions);
@@ -68,18 +65,10 @@ export default function QuestionPanel() {
           })
           .then((resp) => {
             dispatch(SetId(QuizId1.state));
-
-            
           })
-          .catch((error) => {
-           
-          });
-
-     
+          .catch((error) => {});
       })
-      .catch((error) => {
-        
-      });
+      .catch((error) => {});
   }
 
   function MoveDown(index) {
@@ -104,18 +93,10 @@ export default function QuestionPanel() {
           })
           .then((resp) => {
             dispatch(SetId(QuizId1.state));
-
-          
           })
-          .catch((error) => {
-          
-          });
-
-      
+          .catch((error) => {});
       })
-      .catch((error) => {
-       
-      });
+      .catch((error) => {});
   }
 
   return (
