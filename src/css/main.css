@@ -212,7 +212,28 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 0.5vw;
+  flex-direction: column;
+}
+.AddQuestion__Chat_Input div {
+  display: flex;
+  gap: 1vw;
+  margin-top: 1vh;
+}
+.AddQuestion__Chat_Input div input {
+  min-height: 4vh;
+  border: none;
+  background-color: #eaf5ff;
+  border-radius: 5px;
+  min-width: 20vw;
+  text-indent: 10px;
+}
+.AddQuestion__Chat_Input div button {
+  background-color: #0275FF;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  min-height: 4vh;
+  min-width: 5vw;
 }
 .AddQuestion__Chat_Input input {
   min-height: 4vh;
@@ -228,7 +249,7 @@
   border: none;
   color: white;
   min-height: 4vh;
-  min-width: 5vw;
+  min-width: 87%;
 }
 .AddQuestion__Chat_Stop {
   background-color: #0275FF;
@@ -239,7 +260,8 @@
   font-size: 1rem;
   border-radius: 10px;
   padding: 2%;
-  margin-top: 4vh;
+  margin-top: 1vh;
+  position: sticky;
 }
 .AddQuestion__Float {
   position: relative;
@@ -326,6 +348,7 @@
   gap: 2vw;
   justify-content: center;
   align-items: center;
+  margin-bottom: 3vh;
 }
 .QuestionPanel__Items_Arrows {
   display: flex;

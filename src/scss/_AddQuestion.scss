@@ -142,7 +142,32 @@
       justify-content: center;
       align-items: center;
       width: 100%;
-      gap: 0.5vw;
+    
+      flex-direction: column;
+
+      div{
+        display: flex;
+        gap: 1vw;
+        margin-top: 1vh;
+
+        input {
+          min-height: 4vh;
+          border: none;
+          background-color: #eaf5ff;
+          border-radius: 5px;
+          min-width: 20vw;
+          text-indent: 10px;
+        }
+  
+        button {
+          background-color: globals.$BackgroundColor;
+          border-radius: 5px;
+          border: none;
+          color: white;
+          min-height: 4vh;
+          min-width: 5vw;
+        }
+      }
 
       input {
         min-height: 4vh;
@@ -159,7 +184,7 @@
         border: none;
         color: white;
         min-height: 4vh;
-        min-width: 5vw;
+        min-width: 87%;
       }
     }
 
@@ -172,7 +197,8 @@
       font-size: 1rem;
       border-radius: 10px;
       padding: 2%;
-      margin-top: 4vh;
+      margin-top: 1vh;
+      position:sticky;
     }
   }
 

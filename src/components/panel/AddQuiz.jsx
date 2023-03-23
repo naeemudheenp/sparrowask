@@ -8,8 +8,10 @@ export default function AddQuiz() {
   const [Title, SetTitle] = useState("");
   const [Desc, SetDesc] = useState("");
   const [Percentage, SetPercentage] = useState("");
+  const [isLoading,setLoading] = useState(false)
 
   function SaveData() {
+
     if (Title == "" || Desc == "" || Percentage == "") {
       dispatch(SetAlert("Please Fill All Fields"));
 
@@ -18,7 +20,7 @@ export default function AddQuiz() {
       }, 1000);
       return;
     }
-
+    setLoading(true)
     axios
       .post(process.env.REACT_APP_BASE_URL, {
         questions: [],
@@ -31,6 +33,7 @@ export default function AddQuiz() {
         SetDesc("");
         SetPercentage("");
         SetOpen("AddQuiz__Form");
+        setLoading(false)
         dispatch(SetAlert("Quiz Added."));
 
         const timer = setTimeout(() => {
@@ -45,7 +48,11 @@ export default function AddQuiz() {
 
   return (
     <div className="AddQuiz">
-      <div className={Open}>
+      {
+        isLoading ? ( 
+          <div class="loader"></div>
+        ):(
+          <div className={Open}>
         <input
           value={Title}
           onChange={(e) => {
@@ -87,6 +94,8 @@ export default function AddQuiz() {
           </button>
         </div>
       </div>
+        )
+      }
       <div className="AddQuiz__Button">
         <button
           onClick={() => {

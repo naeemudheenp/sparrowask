@@ -17,13 +17,15 @@ export default function QuestionPanel() {
   const [Basic, SetBasic] = useState(undefined);
   const [Title, SetTile] = useState("none");
   const [QuizId, SetQuiz] = useState();
+  const [isLoading,setLoading] = useState(true)
 
   useEffect(() => {
     if (QuizId1.state != null && QuizId1.state != "[object Object]") {
       SetQuiz(QuizId1.state);
       GetQuestions();
     } else {
-      alert("Please select a quiz.");
+      SetBasic(undefined)
+      setLoading(true)
     }
   }, [ClassAlert, QuizId1]);
 
@@ -40,9 +42,11 @@ export default function QuestionPanel() {
     SetBasic(data);
     SetTile(data.title);
     SetQuestions(data.questions);
+    setLoading(false)
   }
 
   function MoveUp(index) {
+    setLoading(true)
     if (Questions.length <= 1) {
       alert("Cannot Move.Reached End");
       return;
@@ -72,6 +76,7 @@ export default function QuestionPanel() {
   }
 
   function MoveDown(index) {
+    setLoading(true)
     if (Questions.length <= 1) {
       alert("Cannot Move.Reached End");
       return;
@@ -123,7 +128,9 @@ export default function QuestionPanel() {
         </div>
       )}
 
-      {Questions.length <= 0 ? (
+      {
+        isLoading ? (<div class="loader"></div>):(<div>
+             {Questions.length <= 0 ? (
         <div>No Questions added. </div>
       ) : (
         Questions.map((element, index) => {
@@ -192,6 +199,11 @@ export default function QuestionPanel() {
           }
         })
       )}
+        </div>)
+      }
+
+
+
       <AddQuestion title={Title} id={QuizId1.state} />
     </div>
   );
