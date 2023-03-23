@@ -1,7 +1,7 @@
 import { QuestionClass } from "../../classes/QuestionClass";
 import { useState, useEffect, useId } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SetAlert, DisableAlert, SetId } from "../../actions";
+import { DisableAlert, SetId } from "../../actions";
 import axios from "axios";
 
 export default function AddQuestion(props) {
@@ -28,9 +28,6 @@ export default function AddQuestion(props) {
   const [isLoading, setLoading] = useState(false);
 
   const id1 = useId();
-  const id2 = useId();
-  const id3 = useId();
-  const id4 = useId();
 
   let QuizId = useSelector((state) => state.selectedtId);
 
@@ -162,7 +159,7 @@ export default function AddQuestion(props) {
               return (
                 <>
                   <div
-                    key={id4 + Limit + "td"}
+                    key={id1 + Limit + "td"}
                     className="AddQuestion__Chat_Main"
                   >
                     <i className="fa-solid fa-robot"></i>{" "}
@@ -170,7 +167,7 @@ export default function AddQuestion(props) {
                   </div>
 
                   <div
-                    key={id4 + Limit + "td123"}
+                    key={id1 + Limit + "td123"}
                     className="AddQuestion__Chat_Types"
                   >
                     <div
@@ -222,7 +219,7 @@ export default function AddQuestion(props) {
             {Dynamic.slice(0, FieldLimit).map(() => {
               return (
                 <>
-                  <div key={id2 + FieldLimit} className={Visibility}>
+                  <div key={id1 + FieldLimit} className={Visibility}>
                     <div> {Question}</div>
                   </div>
                 </>
@@ -232,7 +229,7 @@ export default function AddQuestion(props) {
             {Answers.map((elements, index) => {
               return Type == "CheckBox" ? (
                 <div
-                  key={id3 + index + "ch"}
+                  key={id1 + index + "ch"}
                   className="AddQuestion__Chat_Replay"
                 >
                   <input
@@ -249,7 +246,7 @@ export default function AddQuestion(props) {
                 </div>
               ) : (
                 <div
-                  key={id3 + index + "mn"}
+                  key={id1 + index + "mn"}
                   className="AddQuestion__Chat_Replay"
                 >
                   <input
@@ -273,7 +270,7 @@ export default function AddQuestion(props) {
           {Dynamic.slice(0, StopLimit).map(() => {
             return (
               <button
-                key={id3 + StopLimit + "ch"}
+                key={id1 + StopLimit + "ch"}
                 className="AddQuestion__Chat_Stop"
                 onClick={() => {
                   SaveData();
@@ -311,7 +308,7 @@ export default function AddQuestion(props) {
       </div>
       <div
         onClick={() => {
-          if (QuizId.state == null) {
+          if (QuizId.state == null || QuizId.state == "[object Object]") {
             alert("Please select a quiz");
           } else {
             setBot("");

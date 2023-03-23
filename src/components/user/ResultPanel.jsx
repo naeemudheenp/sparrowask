@@ -9,14 +9,14 @@ export default function ResultPanel() {
   Result = localStorage.getItem(id);
   Result = JSON.parse(Result);
 
-  console.log(Result);
+
 
   useEffect(() => {}, []);
 
   return Result.result ? (
     <div className="ResultPanel">
       <div className="ResultPanel__Result">
-        <i class="fa-solid fa-face-smile"></i>
+        <i className="fa-solid fa-face-smile"></i>
         <div className="ResultPanel__Result_Header">
           Hooray ! You Have Passed The Test.
         </div>
@@ -30,7 +30,7 @@ export default function ResultPanel() {
   ) : (
     <div className="ResultPanel Fail">
       <div className="ResultPanel__Result">
-        <i class="fa-solid fa-face-sad-cry"></i>
+        <i className="fa-solid fa-face-sad-cry"></i>
         <div className="ResultPanel__Result_Header">
           Oops ! You Failed The Test.
         </div>
