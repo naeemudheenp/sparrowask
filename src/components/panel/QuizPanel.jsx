@@ -14,7 +14,7 @@ export default function QuizPanel() {
 
   useEffect(() => {
     GetQuizes();
-  }, [ClassAlert.state]);
+  }, [ClassAlert]);
 
   async function GetQuizes() {
     let data;

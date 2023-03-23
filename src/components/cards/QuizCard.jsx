@@ -1,8 +1,17 @@
 import { useDispatch } from "react-redux";
+import { useState ,useEffect} from "react";
 import { SetAlert, DisableAlert, SetId } from "../../actions";
+import { useSelector } from "react-redux";
 import axios from "axios";
 export default function QuizCard({ Quiz }) {
   const dispatch = useDispatch();
+  const [ButtonText,setButtonText] = useState()
+  let QuizId1 = useSelector((state) => state.selectedtId);
+
+  useEffect(() => {
+    alert("hy")
+  }, [ ButtonText]);
+ 
 
   function DeleteQuiz(QuizId) {
     axios
@@ -46,9 +55,14 @@ export default function QuizCard({ Quiz }) {
             DeleteQuiz(Quiz.id);
           }}
         ></i>
-        <button
-          onClick={() => {
+        <button value="sf"
+          onClick={(e) => {
+            setButtonText(e)
             dispatch(SetId(Quiz.id));
+            e.target.innerText="Selected"
+          
+            
+          
           }}
         >
           Select
