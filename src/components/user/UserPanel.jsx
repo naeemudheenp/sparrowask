@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useId } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { SetAnswer } from "../../actions";
@@ -13,6 +13,8 @@ export default function UserPanel() {
   let SelectedAnswers = useSelector((state) => state.setAnswer);
   const [End, SetEnd] = useState(false);
   const dispatch = useDispatch();
+  const [isLoading, setLoading] = useState(true);
+  const id1 = useId();
 
   let { id } = useParams();
 
@@ -34,6 +36,7 @@ export default function UserPanel() {
 
     SetBasics(data);
     SetQuestions(data.questions);
+    setLoading(false);
   }
 
   async function GetResult() {
@@ -91,157 +94,169 @@ export default function UserPanel() {
         <i className="fa-solid fa-robot"></i>
         SparrowBot
       </div>
-
-      <div className="AddQuestion__Chat_Main">
-        <i className="fa-solid fa-robot"></i>{" "}
-        <div> Hello I am SparrowBot. Lets start the quiz?</div>
-      </div>
-      <div className="AddQuestion__Chat_Main">
-        <i className="fa-solid fa-robot"></i>{" "}
-        <div>
-          {" "}
-          Here are the details about the quiz.<br></br>
-          <br></br>
-          Title:{Basics.title}
-          <br></br>
-          Description:{Basics.description}
-          <br></br>
-          Pass Percentage: {Basics.percentage}%<br></br>
-          These are the rules:<br></br>
-          <li>There is no negative mark</li>
-          <li>
-            After choosing the answer click on button to goto next question.
-          </li>
-          <li>You cannot go to the previous question</li>
-          <li>All the best lets begin the quiz.</li>
-        </div>
-      </div>
-
-      {Questions.slice(Limit - 1, Limit).map((element) => {
-        if (element.Type == "DropDown") {
-          return (
-            <div className="UserPanel__Answer">
-              {element.Question}
-              <div className="UserPanel__Answer_Option">
-                <select
-                  onChange={(e) => {
-                    SetValue(parseInt(e.target.value) + 1);
-                  }}
-                >
-                  <option value="">Select</option>
-                  {element.Options.map((opt, index) => {
-                    return (
-                      <>
-                        {opt}
-
-                        <option value={parseInt(index)}>{opt}</option>
-                      </>
-                    );
-                  })}
-                </select>
-              </div>
-            </div>
-          );
-        } else if (element.Type == "Radio") {
-          return (
-            <div className="UserPanel__Answer">
-              {element.Question}
-
-              <div className="UserPanel__Answer_Option">
-              <input defaultChecked
-                        className="UserPanel__Answer_Option_Radio"
-                        onClick={(e) => {
-                          SetValue(parseInt(e.target.value) + 1);
-                        }}
-                        type="radio"
-                        name="radio"
-                        Value={""}
-                      ></input>Select<br></br>
-                {element.Options.map((opt, index) => {
-                  return (
-                    <>
-                      <input
-                        className="UserPanel__Answer_Option_Radio"
-                        onClick={(e) => {
-                          SetValue(parseInt(e.target.value) + 1);
-                        }}
-                        type="radio"
-                        name="radio"
-                        Value={parseInt(index)}
-                      ></input>
-                      {opt}
-                      <br></br>
-                    </>
-                  );
-                })}
-              </div>
-            </div>
-          );
-        } else {
-          return (
-            <div className="UserPanel__Answer">
-              {element.Question}
-
-              <div className="UserPanel__Answer_Option">
-                {element.Options.map((opt, index) => {
-                  return (
-                    <>
-                      <input
-                        onClick={(e) => {
-                          SetValue((arr) => [
-                            ...arr,
-                            parseInt(e.target.value) + 1,
-                          ]);
-                        }}
-                        type="checkbox"
-                        name="radio"
-                        Value={parseInt(index)}
-                      ></input>
-                      {opt}
-                      <br></br>
-                    </>
-                  );
-                })}
-              </div>
-            </div>
-          );
-        }
-      })}
-
-      {!End ? (
-        <button
-          onClick={() => {
-            if (Value == "") {
-              alert("Please give a answer");
-            } else {
-              dispatch(SetAnswer(Value));
-              SetValue([]);
-              SetLimit(Limit + 1);
-              if (Limit >= Questions.length) {
-                SetEnd(true);
-              }
-            }
-          }}
-        >
-          Save & Goto Next Question
-        </button>
+      {isLoading ? (
+        <div className="loader"></div>
       ) : (
-        <div className="UserPanel__End">
+        <>
+          <div className="AddQuestion__Chat_Main">
+            <i className="fa-solid fa-robot"></i>{" "}
+            <div> Hello I am SparrowBot. Lets start the quiz?</div>
+          </div>
           <div className="AddQuestion__Chat_Main">
             <i className="fa-solid fa-robot"></i>{" "}
             <div>
               {" "}
-              Great you have completed the quiz. Lets check the result.
+              Here are the details about the quiz.<br></br>
+              <br></br>
+              Title:{Basics.title}
+              <br></br>
+              Description:{Basics.description}
+              <br></br>
+              Pass Percentage: {Basics.percentage}%<br></br>
+              These are the rules:<br></br>
+              <li>There is no negative mark</li>
+              <li>
+                After choosing the answer click on button to goto next question.
+              </li>
+              <li>You cannot go to the previous question</li>
+              <li>All the best lets begin the quiz.</li>
             </div>
           </div>
-          <button
-            onClick={() => {
-              GetResult();
-            }}
-          >
-            Get Result
-          </button>
-        </div>
+
+          {Questions.slice(Limit - 1, Limit).map((element) => {
+            if (element.Type == "DropDown") {
+              return (
+                <div key={id1 + element.Question} className="UserPanel__Answer">
+                  {element.Question}
+                  <div className="UserPanel__Answer_Option">
+                    <select
+                      onChange={(e) => {
+                        SetValue(parseInt(e.target.value) + 1);
+                      }}
+                    >
+                      <option value="">Select</option>
+                      {element.Options.map((opt, index) => {
+                        return (
+                          <option
+                            key={id1 + element.Question + index}
+                            value={parseInt(index)}
+                          >
+                            {opt}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                </div>
+              );
+            } else if (element.Type == "Radio") {
+              return (
+                <div
+                  key={id1 + element.Question + "kk"}
+                  className="UserPanel__Answer"
+                >
+                  {element.Question}
+
+                  <div className="UserPanel__Answer_Option">
+                    <input
+                      defaultChecked
+                      className="UserPanel__Answer_Option_Radio"
+                      onClick={(e) => {
+                        SetValue(parseInt(e.target.value) + 1);
+                      }}
+                      type="radio"
+                      name="radio"
+                      value={""}
+                    ></input>
+                    Select<br></br>
+                    {element.Options.map((opt, index) => {
+                      return (
+                        <div key={id1 + index + "stds"}>
+                          <input
+                            className="UserPanel__Answer_Option_Radio"
+                            onClick={(e) => {
+                              SetValue(parseInt(e.target.value) + 1);
+                            }}
+                            type="radio"
+                            name="radio"
+                            value={parseInt(index)}
+                          ></input>
+                          {opt}
+                          <br></br>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            } else {
+              return (
+                <div key={id1 + element.Question} className="UserPanel__Answer">
+                  {element.Question}
+
+                  <div className="UserPanel__Answer_Option">
+                    {element.Options.map((opt, index) => {
+                      return (
+                        <div key={id1 + element.Question + index}>
+                          <input
+                            key={id1 + element.Question + index}
+                            onClick={(e) => {
+                              SetValue((arr) => [
+                                ...arr,
+                                parseInt(e.target.value) + 1,
+                              ]);
+                            }}
+                            type="checkbox"
+                            name="radio"
+                            value={parseInt(index)}
+                          ></input>
+                          {opt}
+                          <br></br>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            }
+          })}
+
+          {!End ? (
+            <button
+              onClick={() => {
+                if (Value == "") {
+                  alert("Please give a answer");
+                } else {
+                  dispatch(SetAnswer(Value));
+                  SetValue([]);
+                  SetLimit(Limit + 1);
+                  if (Limit >= Questions.length) {
+                    SetEnd(true);
+                  }
+                }
+              }}
+            >
+              Save & Goto Next Question
+            </button>
+          ) : (
+            <div className="UserPanel__End">
+              <div className="AddQuestion__Chat_Main">
+                <i className="fa-solid fa-robot"></i>{" "}
+                <div>
+                  {" "}
+                  Great you have completed the quiz. Lets check the result.
+                </div>
+              </div>
+              <button
+                onClick={() => {
+                  GetResult();
+                }}
+              >
+                Get Result
+              </button>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
