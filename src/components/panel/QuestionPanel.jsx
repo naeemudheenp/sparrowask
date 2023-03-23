@@ -24,7 +24,8 @@ export default function QuestionPanel() {
       SetQuiz(QuizId1.state);
       GetQuestions();
     } else {
-      alert("Please select a quiz.");
+      SetBasic(undefined)
+      setLoading(true)
     }
   }, [ClassAlert, QuizId1]);
 
@@ -127,7 +128,9 @@ export default function QuestionPanel() {
         </div>
       )}
 
-      {Questions.length <= 0 ? (
+      {
+        isLoading ? (<div class="loader"></div>):(<div>
+             {Questions.length <= 0 ? (
         <div>No Questions added. </div>
       ) : (
         Questions.map((element, index) => {
@@ -196,6 +199,11 @@ export default function QuestionPanel() {
           }
         })
       )}
+        </div>)
+      }
+
+
+
       <AddQuestion title={Title} id={QuizId1.state} />
     </div>
   );
