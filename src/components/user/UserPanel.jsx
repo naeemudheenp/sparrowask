@@ -148,6 +148,15 @@ export default function UserPanel() {
               {element.Question}
 
               <div className="UserPanel__Answer_Option">
+              <input defaultChecked
+                        className="UserPanel__Answer_Option_Radio"
+                        onClick={(e) => {
+                          SetValue(parseInt(e.target.value) + 1);
+                        }}
+                        type="radio"
+                        name="radio"
+                        Value={""}
+                      ></input>Select<br></br>
                 {element.Options.map((opt, index) => {
                   return (
                     <>

@@ -9,7 +9,7 @@ export default function QuizCard({ Quiz }) {
   let QuizId1 = useSelector((state) => state.selectedtId);
 
   useEffect(() => {
-    alert("hy")
+
   }, [ ButtonText]);
  
 
@@ -59,13 +59,15 @@ export default function QuizCard({ Quiz }) {
           onClick={(e) => {
             setButtonText(e)
             dispatch(SetId(Quiz.id));
-            e.target.innerText="Selected"
+            
           
             
           
           }}
         >
-          Select
+          {
+            QuizId1.state!=Quiz.id ? (<div>Select</div>):(<div>Selected</div>)
+          }
         </button>
       </div>
     </div>
