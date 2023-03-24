@@ -58,7 +58,7 @@ export default function AddQuestion(props) {
 
   function SaveData() {
     if ((Answers.length <= 0) | (Correct.length <= 0) | (Type == "")) {
-      alert("Please Fill All Data.");
+      alert("Please Fill All The Data.");
 
       return;
     }
@@ -91,11 +91,9 @@ export default function AddQuestion(props) {
             setStop(0);
 
             dispatch(SetId(props.id));
-            props.id = 0;
+        
 
-            const timer = setTimeout(() => {
-              dispatch(DisableAlert());
-            }, 1000);
+          
           })
           .catch((error) => {});
       })
