@@ -11,21 +11,20 @@ export default function QuestionPanel() {
   let QuizId1 = useSelector((state) => state.selectedtId);
 
   const id1 = useId();
-  const id2 = useId();
-  const id3 = useId();
+
   const [Questions, SetQuestions] = useState([]);
   const [Basic, SetBasic] = useState(undefined);
   const [Title, SetTile] = useState("none");
   const [QuizId, SetQuiz] = useState();
-  const [isLoading,setLoading] = useState(true)
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     if (QuizId1.state != null && QuizId1.state != "[object Object]") {
       SetQuiz(QuizId1.state);
       GetQuestions();
     } else {
-      SetBasic(undefined)
-      setLoading(true)
+      SetBasic(undefined);
+      setLoading(true);
     }
   }, [ClassAlert, QuizId1]);
 
@@ -42,16 +41,15 @@ export default function QuestionPanel() {
     SetBasic(data);
     SetTile(data.title);
     SetQuestions(data.questions);
-    setLoading(false)
+    setLoading(false);
   }
 
   function MoveUp(index) {
-    setLoading(true)
     if (Questions.length <= 1) {
       alert("Cannot Move.Reached End");
       return;
     }
-
+    setLoading(true);
     axios
       .get(process.env.REACT_APP_BASE_URL + QuizId1.state)
       .then((resp) => {
@@ -76,11 +74,11 @@ export default function QuestionPanel() {
   }
 
   function MoveDown(index) {
-    setLoading(true)
     if (Questions.length <= 1) {
       alert("Cannot Move.Reached End");
       return;
     }
+    setLoading(true);
     axios
       .get(process.env.REACT_APP_BASE_URL + QuizId1.state)
       .then((resp) => {
@@ -128,81 +126,90 @@ export default function QuestionPanel() {
         </div>
       )}
 
-      {
-        isLoading ? (<div class="loader"></div>):(<div>
-             {Questions.length <= 0 ? (
-        <div>No Questions added. </div>
+      {isLoading ? (
+        <div class="loader"></div>
       ) : (
-        Questions.map((element, index) => {
-          if (index == 0) {
-            return (
-              <div key={`${index}${id3}`} className="QuestionPanel__Items">
-                <div className="QuestionPanel__Items_Arrows">
+        <div>
+          {Questions.length <= 0 ? (
+            <div>No Questions added. </div>
+          ) : (
+            Questions.map((element, index) => {
+              if (index == 0) {
+                return (
                   <div
-                    onClick={() => {
-                      MoveDown(index);
-                    }}
-                    className="QuestionPanel__Items_Arrows_Arrow"
+                    key={`${element.Question}${id1}`}
+                    className="QuestionPanel__Items"
                   >
-                    <i className="fa-solid fa-arrow-down"></i>
+                    <div className="QuestionPanel__Items_Arrows">
+                      <div
+                        onClick={() => {
+                          MoveDown(index);
+                        }}
+                        className="QuestionPanel__Items_Arrows_Arrow"
+                      >
+                        <i className="fa-solid fa-arrow-down"></i>
+                      </div>
+                    </div>
+                    <QuestionCard Question={element} index={index} />
                   </div>
-                </div>
-                <QuestionCard Question={element} index={index} />
-              </div>
-            );
-          } else if (index + 1 == Questions.length) {
-            return (
-              <div key={`${index}${id2}`} className="QuestionPanel__Items">
-                <div className="QuestionPanel__Items_Arrows">
+                );
+              } else if (index + 1 == Questions.length) {
+                return (
                   <div
-                    onClick={() => {
-                      MoveUp(index);
-                    }}
-                    className="QuestionPanel__Items_Arrows_Arrow"
+                    key={`${element.Question}${id1}`}
+                    className="QuestionPanel__Items"
                   >
-                    <i className="fa-solid fa-arrow-up"></i>
+                    <div className="QuestionPanel__Items_Arrows">
+                      <div
+                        onClick={() => {
+                          MoveUp(index);
+                        }}
+                        className="QuestionPanel__Items_Arrows_Arrow"
+                      >
+                        <i className="fa-solid fa-arrow-up"></i>
+                      </div>
+                    </div>
+                    <QuestionCard Question={element} index={index} />
                   </div>
-                </div>
-                <QuestionCard Question={element} index={index} />
-              </div>
-            );
-          } else {
-            return (
-              <div key={`${index}${id1}`} className="QuestionPanel__Items">
-                <div className="QuestionPanel__Items_Arrows">
+                );
+              } else {
+                return (
                   <div
-                    onClick={() => {
-                      MoveUp(index);
-                    }}
-                    className="QuestionPanel__Items_Arrows_Arrow"
+                    key={`${element.Question}${id1}`}
+                    className="QuestionPanel__Items"
                   >
-                    <i
-                      onClick={() => {
-                        MoveUp(index);
-                      }}
-                      className="fa-solid fa-arrow-up"
-                    ></i>
-                  </div>
+                    <div className="QuestionPanel__Items_Arrows">
+                      <div
+                        onClick={() => {
+                          MoveUp(index);
+                        }}
+                        className="QuestionPanel__Items_Arrows_Arrow"
+                      >
+                        <i
+                          onClick={() => {
+                            MoveUp(index);
+                          }}
+                          className="fa-solid fa-arrow-up"
+                        ></i>
+                      </div>
 
-                  <div className="QuestionPanel__Items_Arrows_Arrow">
-                    <i
-                      onClick={() => {
-                        MoveDown(index);
-                      }}
-                      className="fa-solid fa-arrow-down"
-                    ></i>
+                      <div className="QuestionPanel__Items_Arrows_Arrow">
+                        <i
+                          onClick={() => {
+                            MoveDown(index);
+                          }}
+                          className="fa-solid fa-arrow-down"
+                        ></i>
+                      </div>
+                    </div>
+                    <QuestionCard Question={element} index={index} />
                   </div>
-                </div>
-                <QuestionCard Question={element} index={index} />
-              </div>
-            );
-          }
-        })
+                );
+              }
+            })
+          )}
+        </div>
       )}
-        </div>)
-      }
-
-
 
       <AddQuestion title={Title} id={QuizId1.state} />
     </div>

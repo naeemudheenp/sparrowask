@@ -8,7 +8,7 @@ import AddQuiz from "./AddQuiz";
 
 export default function QuizPanel() {
   const [Quizes, SetQuizes] = useState([]);
-  const [IsLoading,SetLoading] = useState(true)
+  const [IsLoading, SetLoading] = useState(true);
 
   let ClassAlert = useSelector((state) => state.customAlert);
 
@@ -24,21 +24,18 @@ export default function QuizPanel() {
       .then((resp) => {
         data = resp.data;
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
 
     SetQuizes(data);
-    SetLoading(false)
+    SetLoading(false);
   }
 
-  return (
-    IsLoading ? (
-      <div className="QuizPanel" >
-        <div class="loader"></div>
-      </div>
-    ):(
-      <div className="QuizPanel">
+  return IsLoading ? (
+    <div className="QuizPanel">
+      <div className="loader"></div>
+    </div>
+  ) : (
+    <div className="QuizPanel">
       <AddQuiz />
       {Quizes?.length > 0 ? (
         Quizes.map((element) => {
@@ -48,6 +45,5 @@ export default function QuizPanel() {
         <div className="QuizPanel__Error">Quiz Empty.Please Add.</div>
       )}
     </div>
-    )
   );
 }
