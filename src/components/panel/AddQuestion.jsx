@@ -91,11 +91,9 @@ export default function AddQuestion(props) {
             setStop(0);
 
             dispatch(SetId(props.id));
-            props.id = 0;
+        
 
-            const timer = setTimeout(() => {
-              dispatch(DisableAlert());
-            }, 1000);
+          
           })
           .catch((error) => {});
       })
