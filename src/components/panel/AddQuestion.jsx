@@ -207,7 +207,8 @@ export default function AddQuestion(props) {
                     <i className="fa-solid fa-robot"></i>{" "}
                     <div>
                       {" "}
-                      Enter Options and Mark Options Which Are Correct. Press
+                      You have selected <span className="SpanColor">{Type}</span> as question type.
+                      <br></br>Enter Options and Mark Options Which Are Correct. <br></br>Press
                       STOP When finished.
                     </div>
                   </div>

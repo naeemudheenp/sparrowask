@@ -290,6 +290,11 @@
   visibility: hidden;
 }
 
+.SpanColor {
+  color: #0275FF;
+  font-weight: bold;
+}
+
 .AddQuiz {
   display: flex;
   flex-direction: row;
