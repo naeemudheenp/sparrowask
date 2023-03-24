@@ -17,6 +17,7 @@ export default function QuestionPanel() {
   const [Title, SetTile] = useState("none");
   const [QuizId, SetQuiz] = useState();
   const [isLoading, setLoading] = useState(true);
+  const [isClear,setClear] = useState(false)
 
   useEffect(() => {
     if (QuizId1.state != null && QuizId1.state != "[object Object]") {
@@ -25,11 +26,14 @@ export default function QuestionPanel() {
     } else {
       SetBasic(undefined);
       setLoading(true);
+      setClear(true)
     }
   }, [ClassAlert, QuizId1]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   async function GetQuestions() {
+    setLoading(true);
+    setClear(false)
     let data;
 
     await axios
@@ -50,6 +54,7 @@ export default function QuestionPanel() {
       return;
     }
     setLoading(true);
+    setClear(false)
     axios
       .get(process.env.REACT_APP_BASE_URL + QuizId1.state)
       .then((resp) => {
@@ -79,6 +84,7 @@ export default function QuestionPanel() {
       return;
     }
     setLoading(true);
+    setClear(false)
     axios
       .get(process.env.REACT_APP_BASE_URL + QuizId1.state)
       .then((resp) => {
@@ -127,7 +133,11 @@ export default function QuestionPanel() {
       )}
 
       {isLoading ? (
-        <div className="loader"></div>
+        
+          isClear ? (
+            <div></div>
+          ):( <div className="loader"></div>)
+        
       ) : (
         <div>
           {Questions.length <= 0 ? (

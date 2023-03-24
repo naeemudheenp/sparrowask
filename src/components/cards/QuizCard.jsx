@@ -31,7 +31,7 @@ export default function QuizCard({ Quiz }) {
   return (
     <div className="QuizCard">
       {isLoading ? (
-        <div class="loader"></div>
+        <div className="loader"></div>
       ) : (
         <>
           <div>
