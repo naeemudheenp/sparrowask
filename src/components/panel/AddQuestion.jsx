@@ -34,7 +34,7 @@ export default function AddQuestion(props) {
 
   let QuizId = useSelector((state) => state.selectedtId);
 
-  useEffect(() => {}, [Visibility, QuizId.state]);
+  useEffect(() => {}, [Visibility, QuizId]);
 
   function UpdateChat() {
     if (Chat == 1) {
@@ -96,9 +96,7 @@ export default function AddQuestion(props) {
             dispatch(SetId(props.id));
             props.id = 0;
 
-            const timer = setTimeout(() => {
-              dispatch(DisableAlert());
-            }, 1000);
+            
           })
           .catch((error) => {});
       })
