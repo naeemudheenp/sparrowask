@@ -58,7 +58,7 @@ export default function AddQuestion(props) {
 
   function SaveData() {
     if ((Answers.length <= 0) | (Correct.length <= 0) | (Type == "")) {
-      alert("Please Fill All Data.");
+      alert("Please Fill All The Data.");
 
       return;
     }
