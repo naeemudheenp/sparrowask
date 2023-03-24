@@ -39,7 +39,7 @@ export default function QuestionCard(props) {
   return (
     <div className="QuestionCard">
       {isLoading ? (
-        <div class="loader"></div>
+        <div className="loader"></div>
       ) : (
         <>
           <div className="QuestionCard__Question">

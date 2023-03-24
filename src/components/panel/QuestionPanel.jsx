@@ -127,7 +127,7 @@ export default function QuestionPanel() {
       )}
 
       {isLoading ? (
-        <div class="loader"></div>
+        <div className="loader"></div>
       ) : (
         <div>
           {Questions.length <= 0 ? (

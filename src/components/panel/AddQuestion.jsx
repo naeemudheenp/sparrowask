@@ -123,13 +123,13 @@ export default function AddQuestion(props) {
               }}
               className="AddQuestion__Chat__Header_Panel_Close"
             >
-              <i class="fa-solid fa-minus"></i>
+              <i className="fa-solid fa-minus"></i>
             </div>
           </div>
         </div>
 
         {isLoading ? (
-          <div class="loader"></div>
+          <div className="loader"></div>
         ) : (
           <div className="AddQuestion__Chat">
             <div className="AddQuestion__Chat_Main">
@@ -155,7 +155,8 @@ export default function AddQuestion(props) {
 
             {Dynamic.slice(0, Limit).map(() => {
               return (
-                <>
+                <div 
+                key={id1 + Limit + "td"}>
                   <div
                     key={id1 + Limit + "td"}
                     className="AddQuestion__Chat_Main"
@@ -195,13 +196,13 @@ export default function AddQuestion(props) {
                       Radio
                     </div>
                   </div>
-                </>
+                </div>
               );
             })}
 
             {Dynamic.slice(0, OptionLimit).map(() => {
               return (
-                <>
+                
                   <div key={id1 + Limit} className="AddQuestion__Chat_Main">
                     <i className="fa-solid fa-robot"></i>{" "}
                     <div>
@@ -210,17 +211,17 @@ export default function AddQuestion(props) {
                       STOP When finished.
                     </div>
                   </div>
-                </>
+                
               );
             })}
 
             {Dynamic.slice(0, FieldLimit).map(() => {
               return (
-                <>
+                
                   <div key={id1 + FieldLimit} className={Visibility}>
                     <div> {Question}</div>
                   </div>
-                </>
+              
               );
             })}
 
