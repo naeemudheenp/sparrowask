@@ -12,11 +12,15 @@ export default function AddQuiz() {
 
   function SaveData() {
     if (Title == "" || Desc == "" || Percentage == "") {
-      dispatch(SetAlert("Please Fill All Fields"));
 
-      const timer = setTimeout(() => {
-        dispatch(DisableAlert());
-      }, 1000);
+
+      alert("Please fill all fields")
+      return;
+    }
+    if(Percentage>100){
+      alert("Please enter percentage less than 100")
+
+    
       return;
     }
     setLoading(true);
@@ -47,7 +51,7 @@ export default function AddQuiz() {
   return (
     <div className="AddQuiz">
       {isLoading ? (
-        <div class="loader"></div>
+        <div className="loader"></div>
       ) : (
         <div className={Open}>
           <input

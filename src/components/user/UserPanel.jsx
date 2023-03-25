@@ -201,15 +201,21 @@ export default function UserPanel() {
                           <input
                             key={id1 + element.Question + index}
                             onClick={(e) => {
-                              if(Value.includes(parseInt(e.target.value) + 1,)){          
-                                SetValue((arr) => arr.filter((element) => element != parseInt(e.target.value) + 1,));          
-                            }else{
-                              SetValue((arr) => [
-                                ...arr,
-                                parseInt(e.target.value) + 1,
-                              ]);
-                            }
-                              
+                              if (
+                                Value.includes(parseInt(e.target.value) + 1)
+                              ) {
+                                SetValue((arr) =>
+                                  arr.filter(
+                                    (element) =>
+                                      element != parseInt(e.target.value) + 1
+                                  )
+                                );
+                              } else {
+                                SetValue((arr) => [
+                                  ...arr,
+                                  parseInt(e.target.value) + 1,
+                                ]);
+                              }
                             }}
                             type="checkbox"
                             name="radio"
