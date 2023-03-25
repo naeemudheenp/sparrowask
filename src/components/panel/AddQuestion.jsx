@@ -16,15 +16,15 @@ export default function AddQuestion(props) {
 
   const [Dynamic, setDynamic] = useState([0, 1, 2, 3, 4, 5, 6]);
   const [Limit, setLimit] = useState(0);
-  const [OptionLimit, setOption] = useState(0);
-  const [FieldLimit, setField] = useState(0);
-  const [StopLimit, setStop] = useState(0);
+  const [OptionLimit, setOptionLimit] = useState(0);
+  const [FieldLimit, setFieldLimit] = useState(0);
+  const [StopLimit, setStopLimit] = useState(0);
   const [Chat, setChat] = useState(0);
 
   const [Question, setQuestion] = useState("");
   const [Type, setType] = useState("");
-  const [Answers, setAnswers] = useState([]);
-  const [Correct, setCorrect] = useState([]);
+  const [Answers, setAnswers] = useState([]); //options
+  const [Correct, setCorrect] = useState([]); //their answers
   const [isLoading, setLoading] = useState(false);
 
   const id1 = useId();
@@ -44,7 +44,7 @@ export default function AddQuestion(props) {
       setQuestion(input);
       setChat(1);
       setLimit(1);
-      setStop(1);
+      setStopLimit(1);
 
       setVisibility("AddQuestion__Chat_Replay");
     }
@@ -52,8 +52,8 @@ export default function AddQuestion(props) {
 
   function SetterType(type) {
     setType(type);
-    setOption(1);
-    setStop(1);
+    setOptionLimit(1);
+    setStopLimit(1);
   }
 
   function SaveData() {
@@ -84,11 +84,11 @@ export default function AddQuestion(props) {
             setCorrect([]);
             setQuestion("");
             setLimit(0);
-            setOption(0);
-            setField(0);
+            setOptionLimit(0);
+            setFieldLimit(0);
             setChat(0);
             setVisibility("");
-            setStop(0);
+            setStopLimit(0);
 
             dispatch(SetId(props.id));
           })
@@ -112,11 +112,11 @@ export default function AddQuestion(props) {
                 setCorrect([]);
                 setQuestion("");
                 setLimit(0);
-                setOption(0);
-                setField(0);
+                setOptionLimit(0);
+                setFieldLimit(0);
                 setChat(0);
                 setVisibility("");
-                setStop(0);
+                setStopLimit(0);
               }}
               className="AddQuestion__Chat__Header_Panel_Close"
             >
